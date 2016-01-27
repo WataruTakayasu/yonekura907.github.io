@@ -14,15 +14,15 @@
 
 
   function setup() {
-    createCanvas(windowWidth, windowHeight);
+    createCanvas(375, 375);
 
-    // push();
-    // scale(2,2);
+    push();
+    scale(2,2);
     for (var i = 0; i < alphabet.a.length; i++) {
       console.log(i);
       ellipse(alphabet.a[i].x, alphabet.a[i].y, 80, 80);
     }
-    // pop();
+    pop();
 
     // for (var i = 0; i < alphabet.b.length; i++) {
     //   console.log(i);
