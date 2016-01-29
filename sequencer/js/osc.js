@@ -1,7 +1,8 @@
 var A1; // 読み込むサウンド用変数
-
+var env;
 // シーケンス用配列
 var sqArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
 
 // ループカウント
 var loopCount = 0;
@@ -9,6 +10,7 @@ var loopCount = 0;
 
 // UIボタン
 var bpmSlider; // BPMスライダ
+var bpmText // BPM用テキスト
 var startBtn; // スタートボタン
 var stopBtn; // ストップ
 var btnArr = []; // 入力ボタン用配列
@@ -16,7 +18,7 @@ var btnArr = []; // 入力ボタン用配列
 
 // 音データのプリロード
 function preload() {
-  A1 = loadSound('audio/casio/A1.mp3');
+  // A1 = loadSound('audio/casio/A1.mp3');
 }
 
 
@@ -28,6 +30,21 @@ function setup() {
 
   // 初期はループ停止
   // noLoop();
+  var aT = 0.1; // attack time in seconds
+  var aL = 0.7; // attack level 0.0 to 1.0
+  var dT = 0.3; // decay time in seconds
+  var dL = 0.1; // decay level  0.0 to 1.0
+  var sT = 0.2; // sustain time in seconds
+  var sL = dL; // sustain level  0.0 to 1.0
+  var rT = 0.5; // release time in seconds
+// release level defaults to zero
+  // release level defaults to zero
+  env = new p5.Env(aT, aL, dT, dL, sT, sL, rT);
+  A1 = new p5.Oscillator('square');
+  // A1.freq(840);
+  A1.amp(env);
+  A1.start();
+
 
   // BPM 初期値120
   bpmSlider = createSlider(40, 200, 120); // スライダの作成
@@ -35,7 +52,7 @@ function setup() {
 
 
   // A1サウンドのボリューム
-  A1.setVolume(0.8);
+  // A1.setVolume(0.8);
 
   // スタートボタンの生成
   startBtn = createButton('start');
@@ -47,12 +64,12 @@ function setup() {
   stopBtn.position(300, 20);
   stopBtn.mousePressed(stopLoop);
 
+
   // 入力ボタンの生成
   for (var i = 0; i < sqArr.length; i++) {
-    btnArr[i] = createDiv(i); //<div>の生成
-    btnArr[i].id(i); //<div>のidにi番を設定
-    btnArr[i].class('btn'); //<div>のclassにbtn番を設定
-    btnArr[i].position(50 * i + 30, 80); //<button>の位置
+    btnArr[i] = createButton(i); //<button>の生成
+    btnArr[i].id(i); //<button>のvalueにi番を設定
+    btnArr[i].position(30 * i + 20, 70); //<button>の位置
     btnArr[i].mousePressed(function(e){
        //<button>を押した時のイベント
       console.log(this.elt.id);
@@ -62,6 +79,38 @@ function setup() {
 
   // シーケンサーの設置
   setSq();
+}
+
+
+function setSq(){
+  // シーケンサー用の円の配置
+  for (var i = 0; i < sqArr.length; i++) {
+    noStroke(); //線なし
+
+    // シーケンス用配列の値が0なら
+    if(sqArr[i] == 0){
+      fill(200); // 塗りはグレー
+    } else {
+      // シーケンス用配列の値が1なら
+      fill(255, 150, 0); // 塗りはオレンジ
+    }
+    // 円の配置
+    ellipse(50*i + 50, 150, 40, 40);
+    // triangle(30*i+50, 75, 58*i+50, 20, 86*i+50, 75);
+  }
+}
+
+// インプット入力の値をシーケンス用配列に設定する
+function changeInput(value) {
+  console.log(value+'click');
+  if( sqArr[value] == 0 ){
+    // トグル　現状の値が0なら1を設定
+    sqArr[value] = 1;
+  } else {
+    sqArr[value] = 0;
+    // トグル　現状の値が1なら0を設定
+  }
+  setSq(); // シーケンサーの設置
 }
 
 
@@ -79,57 +128,27 @@ function draw(){
   // シーケンサーの設置
   setSq();
 
+  // ループ用の円の色
+  fill(255, 0, 0);
+  // ループ用の円の配置
+  ellipse(50 * loopCount + 50, 150, 40, 40);
+
+  // console.log(loopCount);
+  // console.log(sqArr[loopCount]);
+
   // シーケンス用配列のループカンター番目の値が1なら
   if(sqArr[loopCount] !== 0){
-    console.log('play');
-     A1.play();　// 再生
-
+    // console.log('play');
+    env.play(A1);　// 再生
   }
+
   // ループカンターをインクリメント
   loopCount++;
+
   // ループカウンターの数がシーケンス用配列の最大になったら
   if(loopCount >= sqArr.length){
     loopCount = 0; //ループカンターを0に戻す
   }
-}
-
-
-// シーケンサーの設置
-function setSq(){
-  // console.log(loopCount);
-  // console.log(sqArr[loopCount]);
-
-  // シーケンサー用の円の配置
-  for (var i = 0; i < sqArr.length; i++) {
-    noStroke(); //線なし
-    // シーケンス用配列の値が0なら
-    if(sqArr[i] == 1){
-      fill(255, 150, 0); // 塗りはオレンジ
-    } else {
-      fill(200); // 塗りはグレー
-    }
-    // ループカウンターと円のi番目が一致したら
-    if(i == loopCount) {
-      // 赤く塗られる
-      fill(255, 0, 0);
-    }
-    // 円の配置
-    ellipse(50*i + 50, 100, 40, 40);
-  }
-}
-
-
-// インプット入力の値をシーケンス用配列に設定する
-function changeInput(value) {
-  console.log(value+'click');
-  if( sqArr[value] == 0 ){
-    // トグル　現状の値が0なら1を設定
-    sqArr[value] = 1;
-  } else {
-    sqArr[value] = 0;
-    // トグル　現状の値が1なら0を設定
-  }
-  setSq(); // シーケンサーの設置
 }
 
 

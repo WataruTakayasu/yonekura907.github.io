@@ -19,8 +19,6 @@ var loopCount = 0;
 // シーケンサー配列の数
 var sqCount = 16;
 
-// BPM 120
-var bpm = 120;
 
 // UIボタン
 var bpmSlider; // BPMスライダ
@@ -28,8 +26,10 @@ var bpmText // BPM用テキスト
 var startBtn; // スタートボタン
 var stopBtn; // ストップ
 
-// シーケンサー用インスタンスの変数
+
+// シーケンサーインスタンス用の変数
 var a, csharp, e, fsharp;
+
 
 // 音データのプリロード
 function preload() {
@@ -42,41 +42,52 @@ function preload() {
 // 初期設定
 function setup() {
 
-  createCanvas(900, 900); //Canvasの生成
-
   // 初期はループ停止
   // noLoop();
 
-  // BPMをフレームレートに換算
-  frameRate( (bpm * 4) / 60);
+  // BPM 初期値120
+  bpmSlider = createSlider(40, 200, 120); // スライダの作成
+  bpmSlider.position(90, 18); // スライダの位置
+
 
   // スタートボタンの生成
   startBtn = createButton('start');
-  startBtn.position(50, 20);
+  startBtn.position(250, 20);
   startBtn.mousePressed(startLoop);
 
   // 停止ボタンの生成
   stopBtn = createButton('stop');
-  stopBtn.position(100, 20);
+  stopBtn.position(300, 20);
   stopBtn.mousePressed(stopLoop);
 
-  a = new Sequencer(50, 50, sounds[0]);
-  csharp = new Sequencer(50, 100, sounds[1]);
-  e = new Sequencer(50, 150, sounds[2]);
-  fsharp = new Sequencer(50, 200, sounds[3]);
+
+  a = new Sequencer(50, 100, sounds[0]);
+  csharp = new Sequencer(50, 250, sounds[1]);
+  e = new Sequencer(50, 400, sounds[2]);
+  fsharp = new Sequencer(50, 550, sounds[3]);
+
+  createCanvas(900, 900); //Canvasの生成
+  background(255); //初期の背景色
 
 }
 
 
 // ループ関数
 function draw(){
+
   // console.log(sqArr);
   background(255);
+
+  // BPMスライダー値の取り出し
+  bpmValue = bpmSlider.value();
+  // console.log(bpmValue);
+  frameRate( (bpmValue * 4) / 60);　// BMPをフレームレートに変換
 
   a.set();
   csharp.set();
   e.set();
   fsharp.set();
+
 
   // ループカンターをインクリメント
   loopCount++;
@@ -85,22 +96,17 @@ function draw(){
   if(loopCount >= sqCount){
     loopCount = 0; //ループカンターを0に戻す
   }
+
 }
 
 
 
 // シーケンサー・クラス
 function Sequencer(aX,aY,aSound){
-  this.init(aX,aY,aSound);
-}
 
-Sequencer.prototype.init = function(aX,aY,aSound){
   this.x = aX;
   this.y = aY;
   this.sound = aSound;
-
-  // A1サウンドのボリューム
-  this.sound.setVolume(0.8);
 
   // シーケンス用配列
   this.sqArr = [];
@@ -109,53 +115,47 @@ Sequencer.prototype.init = function(aX,aY,aSound){
     this.sqArr[i] = 0;
   }
 
-  // イベント内でthisを使うので配列を一旦変数に保存
+  // イベントの
   var thatSqArr = this.sqArr;
 
   this.btnArr = []; // 入力ボタン用配列
+
   // 入力ボタンの生成
   for (var i = 0; i < this.sqArr.length; i++) {
-    this.btnArr[i] = createDiv(i); //<button>の生成
+    this.btnArr[i] = createButton(i); //<button>の生成
     this.btnArr[i].id(i); //<button>のvalueにi番を設定
-    this.btnArr[i].class('btn'); //<button>のvalueにi番を設定
-    this.btnArr[i].position(50 * i + this.x -20, this.y + 50); //<button>の位置
-
-    //<button>を押した時のイベント
-    this.btnArr[i].mousePressed(function(){
+    this.btnArr[i].position(49 * i + this.x, this.y); //<button>の位置
+    this.btnArr[i].mousePressed(function(e){
+       //<button>を押した時のイベント
       console.log(this.elt.id);
-
-        if( thatSqArr[this.elt.id] == 0 ){
-          // トグル　現状の値が0なら1を設定
-          thatSqArr[this.elt.id] = 1;
-        } else {
-          thatSqArr[this.elt.id] = 0;
-          // トグル　現状の値が1なら0を設定
-        }
-
-      // this.changeInput(this.elt.id);
+      changeInput(this.elt.id);
     });
+  }
+
+
+  // インプット入力の値をシーケンス用配列に設定する
+  function changeInput(id) {
+    console.log(id+'click');
+
+    if( thatSqArr[id] == 0 ){
+      // トグル　現状の値が0なら1を設定
+      thatSqArr[id] = 1;
+      console.log('111');
+    } else {
+      thatSqArr[id] = 0;
+      // トグル　現状の値が1なら0を設定
+      console.log('000');
+    }
   }
 }
 
 
-Sequencer.prototype.changeInput = function(aValue){
-
-  console.log(aValue + 'click');
-
-  // if( thatSqArr[aValue] == 0 ){
-  //   // トグル　現状の値が0なら1を設定
-  //   thatSqArr[aValue] = 1;
-  // } else {
-  //   thatSqArr[aValue] = 0;
-  //   // トグル　現状の値が1なら0を設定
-  // }
-}
 
 
 Sequencer.prototype.set = function(){
 
-  // console.log(this,loopCount);
-  // console.log(sqArr[loopCount]);
+  // A1サウンドのボリューム
+  this.sound.setVolume(0.8);
 
   // シーケンサー用の円の配置
   for (var i = 0; i < this.sqArr.length; i++) {
@@ -168,14 +168,17 @@ Sequencer.prototype.set = function(){
       // シーケンス用配列の値が1なら
       fill(255, 150, 0); // 塗りはオレンジ
     }
-
-    // ループカウンターと円のi番目が一致したら
-    if(i == loopCount){
-      fill(255, 0, 0);   // 赤く塗られる
-    }
     // 円の配置
     ellipse(50*i + this.x, this.y+70, 40, 40);
   }
+
+  // ループ用の円の色
+  fill(255, 0, 0);
+  // ループ用の円の配置
+  ellipse(50 * loopCount + this.x, this.y+70, 40, 40);
+
+  // console.log(loopCount);
+  // console.log(sqArr[loopCount]);
 
   // シーケンス用配列のループカンター番目の値が1なら
   if(this.sqArr[loopCount] !== 0){

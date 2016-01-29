@@ -1,11 +1,13 @@
 var A1; // 読み込むサウンド用変数
 
 // シーケンス用配列
-var sqArr = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+var sqArr = [];
 
 // ループカウント
 var loopCount = 0;
 
+// シーケンサー配列の数
+var sqCount = alphabet.a.length;
 
 // UIボタン
 var bpmSlider; // BPMスライダ
@@ -23,36 +25,32 @@ function preload() {
 // 初期設定
 function setup() {
 
-  createCanvas(900, 600); //Canvasの生成
+  createCanvas(800, 800, WEBGL); //Canvasの生成
   // background(255); //初期の背景色
 
   // 初期はループ停止
   // noLoop();
 
   // BPM 初期値120
-  bpmSlider = createSlider(40, 200, 120); // スライダの作成
-  bpmSlider.position(90, 18); // スライダの位置
+  // bpmSlider = createSlider(40, 200, 120); // スライダの作成
+  // bpmSlider.position(90, 18); // スライダの位置
 
 
   // A1サウンドのボリューム
   A1.setVolume(0.8);
 
-  // スタートボタンの生成
-  startBtn = createButton('start');
-  startBtn.position(250, 20);
-  startBtn.mousePressed(startLoop);
 
-  // 停止ボタンの生成
-  stopBtn = createButton('stop');
-  stopBtn.position(300, 20);
-  stopBtn.mousePressed(stopLoop);
+  // 16個分、配列に0を並べる
+  for (var i = 0; i < sqCount; i++) {
+    sqArr[i] = 0;
+  }
 
   // 入力ボタンの生成
-  for (var i = 0; i < sqArr.length; i++) {
+  for (var i = 0; i < sqCount; i++) {
     btnArr[i] = createDiv(i); //<div>の生成
     btnArr[i].id(i); //<div>のidにi番を設定
     btnArr[i].class('btn'); //<div>のclassにbtn番を設定
-    btnArr[i].position(50 * i + 30, 80); //<button>の位置
+    btnArr[i].position(alphabet.a[i].x -20, alphabet.a[i].y -20); //<button>の位置
     btnArr[i].mousePressed(function(e){
        //<button>を押した時のイベント
       console.log(this.elt.id);
@@ -62,6 +60,18 @@ function setup() {
 
   // シーケンサーの設置
   setSq();
+
+
+  // スタートボタンの生成
+  startBtn = createButton('start');
+  startBtn.position(50, 800);
+  startBtn.mousePressed(startLoop);
+
+  // 停止ボタンの生成
+  stopBtn = createButton('stop');
+  stopBtn.position(100, 800);
+  stopBtn.mousePressed(stopLoop);
+
 }
 
 
@@ -72,9 +82,9 @@ function draw(){
   background(255);
 
   // BPMスライダー値の取り出し
-  bpmValue = bpmSlider.value();
+  // bpmValue = bpmSlider.value();
   // console.log(bpmValue);
-  frameRate( (bpmValue * 4) / 60);　// BMPをフレームレートに変換
+  frameRate( (120 * 4) / 60);　// BMPをフレームレートに変換
 
   // シーケンサーの設置
   setSq();
@@ -83,7 +93,6 @@ function draw(){
   if(sqArr[loopCount] !== 0){
     console.log('play');
      A1.play();　// 再生
-
   }
   // ループカンターをインクリメント
   loopCount++;
@@ -100,7 +109,7 @@ function setSq(){
   // console.log(sqArr[loopCount]);
 
   // シーケンサー用の円の配置
-  for (var i = 0; i < sqArr.length; i++) {
+  for (var i = 0; i < sqCount; i++) {
     noStroke(); //線なし
     // シーケンス用配列の値が0なら
     if(sqArr[i] == 1){
@@ -114,7 +123,8 @@ function setSq(){
       fill(255, 0, 0);
     }
     // 円の配置
-    ellipse(50*i + 50, 100, 40, 40);
+    sphere(alphabet.a[i].x, alphabet.a[i].y, 40, 40);
+    // ellipse(50*i + 50, 100, 40, 40);
   }
 }
 
