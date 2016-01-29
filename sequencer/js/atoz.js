@@ -123,7 +123,7 @@ function setSq(){
       fill(255, 0, 0);
     }
     // 円の配置
-    ellipse(alphabet.a[i].x, alphabet.a[i].y, 40, 40);
+    ellipse(alphabet.a[i].x, alphabet.a[i].y, 80, 80);
     // ellipse(50*i + 50, 100, 40, 40);
   }
 }
