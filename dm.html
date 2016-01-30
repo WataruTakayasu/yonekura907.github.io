@@ -16,9 +16,7 @@
 
 	$(function(){
 		// devicemotion Event
-		$(window).on("devicemotion", function(evt){
-			shakeDevice(evt);
-		});
+		window.addEventListener("devicemotion", shakeDevice);
 
 		// ジャイロセンサーの値が変化
 		function shakeDevice(evt) {
@@ -31,15 +29,18 @@
 			// Z軸
 			var z = evt.acceleration.z;
 
-			if (Math.abs(x) > 15 || Math.abs(y) > 15 || Math.abs(z) > 15) {
-    	// ここに振っているときの動作を入れる
-				alert("振ってるよ");
-				$(window).off('devicemotion');
-			}
-
 			$("ul li:eq(0)").text("x:"+x);
 			$("ul li:eq(1)").text("y:"+y);
 			$("ul li:eq(2)").text("z:"+z);
+			
+
+			if (Math.abs(x) > 15 || Math.abs(y) > 15 || Math.abs(z) > 15) {
+    	// ここに振っているときの動作を入れる
+				alert("振ってるよ");
+				window.removeEventListener('devicemotion',shakeDevice);
+			}
+
+
 		}
 	});
 	</script>
