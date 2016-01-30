@@ -16,10 +16,12 @@
 
 	$(function(){
 		// devicemotion Event
-		window.addEventListener("devicemotion", devicemotionHandler);
+		$(window).on("devicemotion", function(evt){
+			shakeDevice(evt);
+		});
 
 		// ジャイロセンサーの値が変化
-		function devicemotionHandler(evt) {
+		function shakeDevice(evt) {
 
 			console.log(evt);
 			// X軸
@@ -32,6 +34,7 @@
 			if (Math.abs(x) > 15 || Math.abs(y) > 15 || Math.abs(z) > 15) {
     	// ここに振っているときの動作を入れる
 				alert("振ってるよ");
+				$(window).off('devicemotion');
 			}
 
 			$("ul li:eq(0)").text("x:"+x);
