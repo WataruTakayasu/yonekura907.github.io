@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>DeviceOrientation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<style>
+#btn{
+	width: 100px;
+	height: 100px;
+	background-color: #F00;
+	border-radius: 50px;
+}
+
+</style>
+</head>
+<body>
+	<div id="btn"></div>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script>
+
+	$(function(){
+
+		$('#btn').on('touchstart', function(evt){
+			$("ul li:eq(0)").text('touchstartされました');
+		});
+
+		$('#btn').on('touchmove', function(evt){
+			$("ul li:eq(1)").text('touchmoveされました');
+		});
+
+		$('#btn').on('touchend', function(evt){
+			$("ul li:eq(2)").text('touchendされました');
+		});
+
+	});
+	</script>
+</body>
+</html>
