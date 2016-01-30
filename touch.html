@@ -8,14 +8,24 @@
 #btn{
 	width: 100px;
 	height: 100px;
+	position: absolute;
+	left:0;
+	top:0;
 	background-color: #F00;
 	border-radius: 50px;
 }
-
+#container{
+	width: 375px;
+	height: 400px;
+	position: relative;
+}
 </style>
 </head>
 <body>
-	<div id="btn"></div>
+	<div id="contaier">
+		<div id="btn"></div>
+	</div>
+
 	<ul>
 		<li></li>
 		<li></li>
@@ -28,6 +38,9 @@
 
 		$('#btn').on('touchstart', function(evt){
 			$("ul li:eq(0)").text('touchstartされました');
+			evt.preventDefault();                     // ページが動くのを止める
+    	this.pageX = evt.changedTouches[0].pageX; // X 座標の位置
+    	this.pageY = evt.changedTouches[0].pageY; // Y 座標の位置
 		});
 
 		$('#btn').on('touchmove', function(evt){
