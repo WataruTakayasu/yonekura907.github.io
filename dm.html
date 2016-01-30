@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>devicemotion</title>
+
+</head>
+<body>
+	<ul>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	<script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script>
+
+	$(function(){
+		// devicemotion Event
+		window.addEventListener("devicemotion", devicemotionHandler);
+
+		// ジャイロセンサーの値が変化
+		function devicemotionHandler(evt) {
+
+			console.log(evt);
+			// X軸
+			var x = evt.acceleration.x;
+			// Y軸
+			var y = evt.acceleration.y;
+			// Z軸
+			var z = evt.acceleration.z;
+
+			if (Math.abs(x) > 15 || Math.abs(y) > 15 || Math.abs(z) > 15) {
+    	// ここに振っているときの動作を入れる
+				alert("振ってるよ");
+			}
+
+			$("ul li:eq(0)").text("x:"+x);
+			$("ul li:eq(1)").text("y:"+y);
+			$("ul li:eq(2)").text("z:"+z);
+		}
+	});
+	</script>
+</body>
+</html>
