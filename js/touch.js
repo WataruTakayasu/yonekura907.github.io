@@ -20,7 +20,6 @@ $(function(){
   $('#ball').on('touchstart',function(){
     $('#touchResult li').eq(0).text('touchstart したよ');
   });
-
   $('#ball').on('touchmove',function(){
     $('#touchResult li').eq(1).text('touchmove したよ');
   });
