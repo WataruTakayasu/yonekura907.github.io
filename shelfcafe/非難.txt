@@ -9,10 +9,7 @@
     </ul>
 </nav>
 
-<div id="mainVisual">
-    <img src="img/main.jpg" alt="welcome to SHELF CAFE">
-</div>
-<!-- mainVisual -->
+
 
 <div id="container">
     <section id="whatsNew">
