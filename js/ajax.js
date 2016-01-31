@@ -33,7 +33,11 @@ $(function(){
     // $('#container').append(data);
 
     for(var cnt = 0; cnt < data.length; cnt++){
-      $('#container li').eq(cnt).text(data[cnt].name);
+
+      // 米倉さんの住んでいる場所は川崎市です。
+      $('#container li').eq(cnt).text(data[cnt].name + 'さんの住んでいる場所は'+data[cnt].address+'です。');
+
+
     }
 
   }
