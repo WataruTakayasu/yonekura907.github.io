@@ -129,7 +129,7 @@ Sequencer.prototype.init = function(aAlphabet, aTypeCount){
     // this.btnArr[i].position(50 * i + 50, 100 + this.typeCount*50);
 
     //<button>を押した時のイベント
-    this.btnArr[i].touchStarted(function(){
+    this.btnArr[i].touchEnded(function(){
       // console.log(this.elt.id);
         if( thatSqArr[this.elt.id] == 0 ){
           // トグル　現状の値が0なら1を設定
