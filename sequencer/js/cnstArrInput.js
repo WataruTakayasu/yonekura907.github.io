@@ -129,26 +129,26 @@ Sequencer.prototype.init = function(aAlphabet, aTypeCount){
     // this.btnArr[i].position(50 * i + 50, 100 + this.typeCount*50);
 
     //<button>を押した時のイベント
-    // this.btnArr[i].touchEnded(function(){
-    //   // console.log(this.elt.id);
-    //     if( thatSqArr[this.elt.id] == 0 ){
-    //       // トグル　現状の値が0なら1を設定
-    //       thatSqArr[this.elt.id] = 1;
-    //     } else {
-    //       thatSqArr[this.elt.id] = 0;
-    //       // トグル　現状の値が1なら0を設定
-    //     }
-    // });
-    this.btnArr[i].addEventListener('touchstart',function(evt){
+    this.btnArr[i].touchMoved(function(){
       // console.log(this.elt.id);
-         if( thatSqArr[this.elt.id] == 0 ){
-           // トグル　現状の値が0なら1を設定
-           thatSqArr[this.elt.id] = 1;
-         } else {
-           thatSqArr[this.elt.id] = 0;
-           // トグル　現状の値が1なら0を設定
-         }
-    },false);
+        if( thatSqArr[this.elt.id] == 0 ){
+          // トグル　現状の値が0なら1を設定
+          thatSqArr[this.elt.id] = 1;
+        } else {
+          thatSqArr[this.elt.id] = 0;
+          // トグル　現状の値が1なら0を設定
+        }
+    });
+    // this.btnArr[i].addEventListener('click',function(evt){
+    //   // console.log(this.elt.id);
+    //      if( thatSqArr[this.elt.id] == 0 ){
+    //        // トグル　現状の値が0なら1を設定
+    //        thatSqArr[this.elt.id] = 1;
+    //      } else {
+    //        thatSqArr[this.elt.id] = 0;
+    //        // トグル　現状の値が1なら0を設定
+    //      }
+    // },false);
 
   }
 }
