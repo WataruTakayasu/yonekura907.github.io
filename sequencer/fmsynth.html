@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>FM Synthesizer</title>
+
+</head>
+<body>
+  <script src="js/p5.js"></script>
+  <script src="js/p5.dom.js"></script>
+  <script src="js/p5.sound.js"></script>
+  <script>
+  // FM Synthesizer
+  var carrier, modulator // オシレーターのオブジェクト管理変数
+  var fft;
+  var mod_freq_div, mod_freq_slider, mod_amp_div, mod_amp_slider;
+  var envelope;
+  var music = [60, 60, 67, 67, 69, 69, 67, 0];
+  var note = 0;
+
+
+  function setup() {
+    createCanvas(512, 256);
+
+    noFill();
+
+    // slider
+    mod_freq_div = createDiv("modulator freq");
+    mod_freq_div.position(10, height + 10);
+    mod_freq_slider = createSlider(1,21,2);
+    mod_freq_div.child(mod_freq_slider);
+
+    mod_amp_div = createDiv("amp");
+    mod_amp_div.position(300, height + 10);
+    mod_amp_slider = createSlider(-10,10,10);
+    mod_amp_div.child(mod_amp_slider);
+
+
+    // oscillator
+    carrier = new p5.Oscillator('swatooth');
+    carrier.amp(0);
+    carrier.freq(1);
+    carrier.start();
+
+    modulator = new p5.Oscillator();
+    modulator.disconnect();
+    modulator.amp(0);
+    modulator.freq(2);
+    modulator.start();
+
+    carrier.freq(modulator.mult(15).add(16));
+
+    envelope = new p5.Env(0.01, 0.6, 0.5, 0.6, 0.0, 0.6, 0.0, 0.0);
+
+    fft = new p5.FFT();
+  }
+
+  function draw(){
+    var x,y,freq;
+
+    // modulatorの周波数をスライダーから取得して変更
+    var mod_freq = mod_freq_slider.value();
+    console.log('mod_freq' + mod_freq);
+    modulator.freq(mod_freq);
+
+    var mod_amp = mod_amp_slider.value()/10;
+    console.log('mod_amp' + mod_amp);
+    modulator.amp(mod_amp);
+
+    if(frameCount % 60 == 0){
+      carrier.amp(0.8);
+
+      if(music[note] > 0){
+        freq = midiToFreq(music[note]);
+        carrier.freq(freq);
+        envelope.play(carrier);
+      } else {
+        carrier.amp(0);
+      }
+      note = (note + 1) % music.length;
+    }
+
+    var waveform = fft.waveform();
+
+    background(220);
+    beginShape();
+    for (var i = 0; i < waveform.length; i++) {
+      x = map(i, 0, waveform.length, 0, width);
+      y = map(waveform[i], -1.0, 1.0, height, 0);
+      vertex(x,y);
+    }
+    endShape();
+  }
+
+  </script>
+
+</body>
+</html>

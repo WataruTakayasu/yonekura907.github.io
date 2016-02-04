@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound</title>
+  <script src="js/p5.min.js"></script>
+  <script src="js/p5.sound.js"></script>
+</head>
+<body>
+
+  <script>
+  var A1;
+  var fft;
+
+  // プリロード
+  function preload() {
+    A1 = loadSound('audio/FWDL.mp3');
+  }
+
+
+  function setup() {
+    createCanvas(900, 600);
+
+
+    // ボリューム
+    // A1.setVolume(0.5);
+
+    noFill();
+    fft = new p5.FFT();
+    fft.setInput(A1);
+
+  }
+
+  function draw(){
+    // var waveform = fft.waveform();
+    var spectrum = fft.analyze();
+
+    background(230);
+    beginShape();
+    for (var i = 0; i < spectrum.length; i++) {
+      var x = map(i, 0, spectrum.length, 0, width);
+      // var y = map(waveform[i], -1.0, 1.0, height, 0);
+
+      // vertex(x,y);
+      var h = map(spectrum[i], 0, 255, 0, height);
+      rect(x, height, width/spectrum.length, -h);
+    }
+    endShape();
+  }
+
+  // play sound on mouse press over canvas
+  function mousePressed() {
+    if (mouseX < width && mouseY < height && mouseX > 0 && mouseY > 0) {
+      // プレイ
+      A1.play();
+    }
+  }
+
+  </script>
+
+</body>
+</html>

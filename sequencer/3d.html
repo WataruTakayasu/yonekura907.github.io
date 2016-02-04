@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Sound</title>
+  <script src="js/p5.js"></script>
+  <script src="js/p5.sound.js"></script>
+</head>
+<body>
+
+<script>
+
+var num = 0;
+function setup() {
+  createCanvas(windowWidth, windowHeight, WEBGL);
+
+}
+
+function draw(){
+  //ドラッグでカメラ動かす
+  orbitControl();
+
+  //ボックス（立方体）
+  box(50, 50, 50);
+
+  //動け
+  translate(200,200,-100);
+  //コーン（三角錐）
+  cone(100, 100);
+
+  //プレーン（平面）
+  translate(-150,200,-200);
+  rotateX(radians(-90)); //-90度回転
+  plane(500, 500);
+
+  //スフィア（球）
+  sphere(200);
+
+  //シリンダー（円柱）
+  translate(-350,100,150);
+  rotateX(radians(-90)); //-90度回転
+  cylinder(100, 100);
+
+  //トーラス（ドーナツ）
+  translate(0,0,350);
+  torus(200, 60);
+}
+
+</script>
+
+</body>
+</html>

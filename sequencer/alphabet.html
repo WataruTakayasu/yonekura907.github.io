@@ -3,44 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>FM Synthesizer</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+
 </head>
 <body>
   <script src="js/p5.js"></script>
   <script src="js/p5.dom.js"></script>
   <script src="js/p5.sound.js"></script>
-  <script src="js/alphabet.js"></script>
   <script>
-
+  var alphabet = {
+    a:[
+      {x:10, y:20},
+      {x:20, y:30},
+      {x:40, y:50}
+    ],
+    b:[
+      {x:10, y:20},
+      {x:20, y:30},
+      {x:40, y:50}
+    ],
+  }
 
   function setup() {
-    createCanvas(375, 375);
-    createCanvas(375, 375);
-    push();
-    scale(0.5,0.5);
+    createCanvas(800, 800);
+
     for (var i = 0; i < alphabet.a.length; i++) {
       console.log(i);
-      ellipse(alphabet.a[i].x, alphabet.a[i].y, 80, 80);
+      ellipse(alphabet.a[i].x, alphabet.a[i].y, 10, 10);
     }
-    pop();
-
-    // for (var i = 0; i < alphabet.b.length; i++) {
-    //   console.log(i);
-    //   ellipse(alphabet.b[i].x, alphabet.b[i].y, 10, 10);
-    // }
-    //
-
-
-    // push();
-
-    //
-    // for (var i = 0; i < alphabet.b.length; i++) {
-    //   console.log(i);
-    //   ellipse(alphabet.b[i].x, alphabet.b[i].y, 30, 30);
-    // }
-    // pop();
-
-
 
   }
   function draw(){

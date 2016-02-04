@@ -16,8 +16,7 @@
   // シーケンサー配列の数
   var sqCount = sqArr.length;
 
-  // ループカウント
-  var loopCount = 0;
+
 
   // 初期設定
   function setup() {
@@ -50,28 +49,7 @@
       ellipse(50*i + 50, 150, 40, 40);
     }
 
-    console.log(loopCount);
-
-    // ループ用の円の色
-    fill(255, 0, 0);
-    // ループ用の円の配置
-    ellipse(50 * loopCount + 50, 150, 40, 40);
-
-    // console.log(sqArr[loopCount]);
-
-    // シーケンス用配列のループカンター番目の値が1なら
-    if(sqArr[loopCount] !== 0){
-      console.log('play');
-    }
-
-    // ループカンターをインクリメント
-    loopCount++;
-
-    // ループカウンターの数がシーケンス用配列の最大になったら
-    if(loopCount >= sqCount){
-      loopCount = 0; //ループカンターを0に戻す
-    }
-
+    
   }
 
   </script>
