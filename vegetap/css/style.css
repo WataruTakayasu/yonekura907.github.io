@@ -1,0 +1,215 @@
+/*//common*/
+#wrapper{
+	width: 1024px;
+	height: 768px;
+/*	background-image: url(../img/common/header01.png),url(../img/common/ground01.png);
+	background-position: left top,left bottom;
+	background-repeat: no-repeat,no-repeat;
+	background-size:1024px auto,1024px auto;*/
+	overflow: hidden;
+	position: relative;
+}
+
+#container{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	z-index: 10;
+}
+
+header{
+	width: 1024px;
+	height: 20px;
+	position: absolute;
+	/*background-image: url(../img/common/header01.png),url(../img/common/ground01.png);
+	background-position: left top,left bottom;
+	background-repeat: no-repeat,no-repeat;
+	background-size:1024px auto,1024px auto;*/
+	z-index: 100;
+	display: none;
+}
+
+/*explanationBg*/
+#headerdBgExplan{
+	width: 1024px;
+	height: 400px;
+	background: url(../img/common/header02.png) no-repeat;
+	background-size:1024px auto;
+	overflow: hidden;
+	z-index: 0;
+	position: relative;
+}
+
+/*//index*/
+
+#homeBtn{
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	left: 50px;
+	top:35px;
+	cursor: pointer;
+	display: none;
+}
+
+#bookBtn{
+	width: 70px;
+	height: 70px;
+	position: absolute;
+
+	right: 130px;
+	top:35px;
+	cursor: pointer;
+}
+
+#helpBtn{
+	width: 70px;
+	height: 70px;
+	position: absolute;
+	right: 50px;
+	top:35px;
+	cursor: pointer;
+}
+
+#homeBtn img,
+#bookBtn img,
+#helpBtn img{
+	width: 70px;
+	height: 70px;
+}
+
+/*canvasの指定*/
+#indexCanvas{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url(../img/common/header01.png),url(../img/common/ground01.png);
+	background-position: left top,left bottom;
+	background-repeat: no-repeat,no-repeat;
+	background-size:1024px auto,1024px auto;
+	display: none;
+}
+
+/*//help*/
+#help{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	background-color: rgba(255,255,255,0.7);  
+	background-size: 1024px;
+	display: none;
+}
+
+#helpmain img{
+	width: 922px;
+	height: auto;
+	margin-left:-461px; 
+	z-index: 1;
+	position: absolute;
+	top: 51px;
+	left: 50%;
+}
+
+/*//picturebook*/
+h2 img{
+	width: 425px;
+	height: auto;
+	margin-left:-212px;
+	position: absolute;
+	top: 85px;
+	left: 50%;
+}
+#picturebook{
+	width: 1024px;
+	height: 768px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	background: url(../img/common/ground03.png) no-repeat bottom;
+	background-size: 1024px;
+	display: none;
+}
+
+#picturebookmain{
+	width: 915px;
+	margin-left:-457px; 
+	z-index: 1;
+	position: absolute;
+	top: 190px;
+	left: 50%;
+}
+
+#picturebook li{
+	width: 208px;
+	position: absolute;
+}
+
+#picturebook li:nth-child(1){
+	left: 0px;
+	top: 0;
+}
+#picturebook li:nth-child(2){
+	left:230px;
+	top: 0;
+}
+#picturebook li:nth-child(3){
+	left:465px;
+	top: 0;
+}
+#picturebook li:nth-child(4){
+	left: 700px;
+	top: 0;
+}
+#picturebook li:nth-child(5){
+	left: 0px;
+	top: 190px;
+}
+#picturebook li:nth-child(6){
+	left:230px;
+	top: 190px;
+}
+#picturebook li:nth-child(7){
+	left: 465px;
+	top: 190px;
+}
+#picturebook li:nth-child(8){
+	left: 700px;
+	top: 190px;
+}
+#picturebook li:nth-child(9){
+	left: 0px;
+	top: 380px;
+}
+#picturebook li:nth-child(10){
+	left:230px;
+	top: 380px;
+}
+#picturebook li:nth-child(11){
+	left: 465px;
+	top: 380px;
+}
+#picturebook li:nth-child(12){
+	left: 700px;
+	top: 380px;
+}
+#picturebook li img{
+	width: 208px;
+	height: auto;
+	display: block;
+}
+
+
+
+
+
+
+
