@@ -31,6 +31,11 @@ $(function(){
             var areaName = data.name;
             $('#areaName').text(areaName);
 
+            // 気温
+            var areaTemp = data.main.temp; //華氏
+            areaTemp = areaTemp - 273.15;
+            $('#areaTemp').text(areaTemp + '度');
+
 
         }
 
