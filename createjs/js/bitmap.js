@@ -18,12 +18,15 @@ $(function(){
     showVege();
   });
 
+
   function showVege(){
     var tomato = new createjs.Bitmap(manifest[0].src);
     tomato.x = 100;
     tomato.y = 100;
     stage.addChild(tomato);
-  }
+
+    stage.update();
+  };
 
 
 
