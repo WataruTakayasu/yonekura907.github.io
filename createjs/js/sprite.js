@@ -39,6 +39,25 @@ $(function(){
       vitaminC.gotoAndPlay('stand');
     }
 
+    // スプライトシートの設定
+    var irSprite = new createjs.SpriteSheet(ironSprite);
+    // スプライトの設定
+    var iron = new createjs.Sprite(irSprite,'stand');
+    stage.addChild(iron);
+    iron.x = 50;
+    iron.y = 480;
+    iron.alpha = 0;
+    // アニメーション
+    createjs.Tween.get(iron).to({alpha:1},500).wait(1000).call(ironWalk).to({x:600},4000).call(ironStand);
+    // ビタミンCが歩く
+    function ironWalk(){
+      iron.gotoAndPlay('walk');
+    }
+    // ビタミンCが止まる
+    function ironStand(){
+      iron.gotoAndPlay('stand');
+    }
+
 
 
 
