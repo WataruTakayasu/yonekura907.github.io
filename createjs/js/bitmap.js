@@ -7,19 +7,23 @@ var manifest = [
 
 // DOMを読み込んだら
 $(function(){
-
   // ステージ（canvas）の設定
   var stage = new createjs.Stage('canvasEl');
-
   // loadQueue　ローディング
   var loadQueue = new createjs.LoadQueue();
   loadQueue.loadManifest(manifest); // 読み込み開始
 
   loadQueue.addEventListener('complete',function(){
     console.log('読み込み完了！！！！');
+    showVege();
   });
 
-
+  function showVege(){
+    var tomato = new createjs.Bitmap(manifest[0].src);
+    tomato.x = 100;
+    tomato.y = 100;
+    stage.addChild(tomato);
+  }
 
 
 
