@@ -44,7 +44,7 @@ $(function(){
     // スプライトの設定
     var iron = new createjs.Sprite(irSprite,'stand');
     stage.addChild(iron);
-    iron.x = 50;
+    iron.x = 30;
     iron.y = 480;
     iron.alpha = 0;
     // アニメーション
