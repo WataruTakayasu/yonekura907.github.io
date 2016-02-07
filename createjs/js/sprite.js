@@ -1,8 +1,8 @@
 // 先読みするリスト
 var manifest = [
-  {src:'img/tomato.png'},
-  {src:'img/pumpkin.png'},
-  {src:'img/hourensou.png'}
+  {src:'img/calcium.png'},
+  {src:'img/iron.png'},
+  {src:'img/vitaminC.png'}
 ];
 
 // DOMを読み込んだら
@@ -18,22 +18,21 @@ $(function(){
     showVege();
   });
 
-  loadQueue.addEventListener('progress',function(evt){
-      console.log(evt.progress); //読み込み状況　0〜1
-  });
-
-
 
   function showVege(){
-    var tomato = new createjs.Bitmap(manifest[0].src);
-    tomato.x = 100;
-    tomato.y = 100;
-    stage.addChild(tomato);
+    // スプライトシートの設定
+    var vcSprite = new createjs.SpriteSheet(vitaminCSprite);
+    // スプライトの設定
+    var vitaminC = new createjs.Sprite(vcSprite,'stand');
+    stage.addChild(vitaminC);
+    vitaminC.x = 150;
+    vitaminC.y = 480;
+    vitaminC.alpha = 0;
+    // アニメーション
+    createjs.Tween.get(vitaminC).to({alpha:1},500).wait(1000).to({x:500},4000);
 
-    var pumpkin = new createjs.Bitmap(manifest[1].src);
-    pumpkin.x = 200;
-    pumpkin.y = 200;
-    stage.addChild(pumpkin);
+
+
 
     stage.update();
   };
