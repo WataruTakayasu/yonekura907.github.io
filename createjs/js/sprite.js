@@ -26,9 +26,9 @@ $(function(){
 
     var ground = new createjs.Bitmap(manifest[4].src);
     stage.addChild(ground);
-    groud.scaleX = 0.5;
-    groud.scaleY = 0.5;
-    groud.y = 400;
+    ground.scaleX = 0.5;
+    ground.scaleY = 0.5;
+    ground.y = 400;
 
     var header = new createjs.Bitmap(manifest[3].src);
     stage.addChild(header);
