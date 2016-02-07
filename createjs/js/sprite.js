@@ -2,7 +2,10 @@
 var manifest = [
   {src:'img/calcium.png'},
   {src:'img/iron.png'},
-  {src:'img/vitaminC.png'}
+  {src:'img/vitaminC.png'},
+  {src:'img/header.png'},
+  {src:'img/ground.png'},
+  {src:'img/logo.png'},
 ];
 
 // DOMを読み込んだら
@@ -20,6 +23,21 @@ $(function(){
 
 
   function showVege(){
+
+    var ground = new createjs.Bitmap(manifest[4].src);
+    stage.addChild(ground);
+    groud.scaleX = 0.5;
+    groud.scaleY = 0.5;
+    groud.y = 400;
+
+    var header = new createjs.Bitmap(manifest[3].src);
+    stage.addChild(header);
+    header.scaleX = 0.5;
+    header.scaleY = 0.5;
+    header.y = 0;
+
+
+
     // スプライトシートの設定
     var vcSprite = new createjs.SpriteSheet(vitaminCSprite);
     // スプライトの設定
@@ -29,7 +47,7 @@ $(function(){
     vitaminC.y = 480;
     vitaminC.alpha = 0;
     // アニメーション
-    createjs.Tween.get(vitaminC).to({alpha:1},450).wait(1000).call(vitaminCWalk).to({x:500},4000).call(vitaminCStand);
+    createjs.Tween.get(vitaminC).to({alpha:1},500).wait(1000).call(vitaminCWalk).to({x:400},4000).call(vitaminCStand);
     // ビタミンCが歩く
     function vitaminCWalk(){
       vitaminC.gotoAndPlay('walk');
