@@ -25,10 +25,13 @@ $(function(){
     tomato.y = 100;
     stage.addChild(tomato);
 
+    var pumpkin = new createjs.Bitmap(manifest[1].src);
+    pumpkin.x = 200;
+    pumpkin.y = 200;
+    stage.addChild(pumpkin);
+
     stage.update();
   };
-
-
 
 
   // フレームレート
