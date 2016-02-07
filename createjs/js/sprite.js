@@ -48,7 +48,7 @@ $(function(){
     iron.y = 480;
     iron.alpha = 0;
     // アニメーション
-    createjs.Tween.get(iron).to({alpha:1},500).wait(1000).call(ironWalk).to({x:600},4000).call(ironStand);
+    createjs.Tween.get(iron).wait(500).to({alpha:1},500).wait(1000).call(ironWalk).to({x:600},4000).call(ironStand);
     // ビタミンCが歩く
     function ironWalk(){
       iron.gotoAndPlay('walk');
