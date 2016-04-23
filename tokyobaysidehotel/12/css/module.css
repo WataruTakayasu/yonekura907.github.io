@@ -1,0 +1,324 @@
+@charset "UTF-8";
+/* CSS Document */
+/* ===================================================================
+CSS information
+スタイル設定
+=================================================================== */
+/* --------------------------------------------------------
+header
+-------------------------------------------------------- */
+div#header{
+	height:95px;
+}
+div#header_content{
+	width:960px;
+	margin:0 auto;
+}
+div#header h1{
+	margin-top:35px;
+}
+
+/* ヘルプナビ */
+div#nav_help{
+	padding-top:20px;
+}
+div#nav_help ul{
+	margin-bottom:10px;
+}
+li#fontsize p.float_left{
+	margin-right:4px;
+}
+li#fontsize span.float_left{
+	margin:-2px 4px 0 0 ;
+	padding:2px;
+	background:#f2f2f2;
+	border-radius: 4px;        /* CSS3草案 */  
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 4px;   /* Firefox用 */
+}
+li#fontsize span.float_left a{
+	display:block;
+}
+div#search_box p#search_form{
+	padding:4px;
+	background:#f4f4f4;
+	color:#cccccc;
+}
+div#nav_help p#search_btn input{
+	background: none repeat scroll 0 0 #E3E3E3;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 1px 1px #F6F6F6 inset;
+    color: #333333;
+    font: bold 12px/1 "helvetica neue",helvetica,arial,sans-serif;
+    padding: 4px 0;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+div#nav_help p#search_btn input:hover{
+	background: none repeat scroll 0 0 #E3E3E3;
+    border: 1px solid #BBBBBB;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 1px 1px #F6F6F6 inset;
+    color: #0099cc;
+    font: bold 12px/1 "helvetica neue",helvetica,arial,sans-serif;
+    padding: 4px 0;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+}
+div#nav_help p.float_left input{
+	width:200px;
+	color:#cccccc;
+}
+div#nav_help li{
+	margin-right:10px;
+}
+div#nav_help li#contact{
+	padding-left:18px;
+	background:url(../images/header/icon_contact.png) left no-repeat;
+}
+div#nav_help li#question{
+	padding-left:15px;
+	background:url(../images/header/icon_question.png) left no-repeat;
+}
+div#nav_help li#sitemap{
+	padding-left:15px;
+	background:url(../images/header/icon_sitemap.png) left no-repeat;
+}
+
+/* --------------------------------------------------------
+gnavi
+-------------------------------------------------------- */
+div#gnavi{
+	background:url(../images/gnavi/bg_gnavi.png) top left repeat-x;
+}
+div#gnavi ul{
+	width:960px;
+	margin:0 auto;
+}
+div#gnavi ul li#gnavi_stay{
+	background:url(../images/gnavi/gnavi_stay_on.png) top left repeat-x;
+}
+div#gnavi ul li#gnavi_rb{
+	background:url(../images/gnavi/gnavi_rb_on.png) top left repeat-x;
+}
+div#gnavi ul li#gnavi_sp{
+	background:url(../images/gnavi/gnavi_sp_on.png) top left repeat-x;
+}
+div#gnavi ul li#gnavi_wedding{
+	background:url(../images/gnavi/gnavi_wedding_on.png) top left repeat-x;
+}
+div#gnavi ul li#gnavi_hotelguide{
+	background:url(../images/gnavi/gnavi_hotelguide_on.png) top left repeat-x;
+}
+
+/* --------------------------------------------------------
+main_images
+-------------------------------------------------------- */
+div#main_images{
+	xz-index:-1000000000 !important;
+}
+.flexslider li.one{
+	padding-top:110px;
+	height:248px;
+	background:#000 url(../images/index_images/img_main_01.png) center top no-repeat;
+}
+/*.flexslider li.two{
+	height:358px;
+	background:#333 url(../images/index_images/img_main_02.png) center top no-repeat;
+}
+.flexslider li.three{
+	height:358px;
+	background:#333 url(../images/index_images/img_main_03.png) center top no-repeat;
+}*/
+div#main_images h1{
+	width:449px;
+	margin:0 auto 10px;
+}
+div#main_images p{
+	text-align:center;
+}
+
+/* --------------------------------------------------------
+content
+-------------------------------------------------------- */
+div#content{
+	width:900px;
+	margin:0 auto;
+	padding:30px 30px 0;
+}
+body#index div#content{
+	width:900px;
+	margin:-25px auto 0;
+	padding:30px 30px 0;
+	background:url(../images/content/bg_index_main.png) center top no-repeat;
+}
+.more{
+	background:url(../images/content/icon_right.png) left top no-repeat;
+	padding-left:20px;
+	margin-right:5px;
+}
+.more a{
+	color:#555 !important;
+	text-decoration:none !important;
+}
+.more a:hover{
+	color:#ccc !important;
+}
+/* --------------------------------------------------------
+aside
+-------------------------------------------------------- */
+div#aside{
+	width:200px;
+	margin-right:18px;
+}
+div#reserve{
+	padding:10px 19px 10px;
+	background:url(../images/side/bg_reserve_repeat.png) repeat-y;
+	font-size:81.3%;
+	letter-spacing:0;
+}
+div#reserve table{
+	margin-bottom:10px;
+}
+div#reserve p#reserve_search{
+	margin-bottom:4px;
+}
+div#reserve table td{
+	height:25px;
+}
+div#reserve_bottom{
+	margin-bottom:20px;
+	padding-bottom:15px;
+	background:url(../images/side/bg_reservation_b.png) bottom left no-repeat;
+}
+div#aside ul.sidebnr li img{
+	margin-bottom:10px;
+	border:1px solid #ebebeb;
+}
+
+/* --------------------------------------------------------
+main
+-------------------------------------------------------- */
+div#main{
+	width:682px;
+	margin-bottom:40px;
+}
+div#main p{
+	margin-bottom:10px;
+}
+
+/* 新着情報 */
+div#info{
+	margin-bottom:10px;
+	border:1px solid #efefef;
+	border-bottom:2px solid #efefef;
+}
+div#info h2.tit{
+	width:669px;
+	height:28px;
+	padding:12px 0 0 12px;
+	background:url(../images/content/bg_infomation.png) top left no-repeat;
+}
+div#info_content{
+	padding:15px 15px 7px;	
+}
+div#info_content ul#pickup{
+	margin-bottom:15px;
+	padding-bottom:15px;
+	border-bottom:1px solid #efefef;
+}
+div#info_content ul#pickup dt{
+	margin-bottom:10px;
+	font-size:112.5%;
+}
+div#info_content ul#pickup li{
+	width:315px;
+}
+div#info_content dd.thumb img{
+	margin-right:15px;
+	padding:4px;
+	border:1px solid #ccc;
+}
+div#info_content dd.cat{
+	margin:0 10px 8px 0;
+}
+
+/* link */
+div#info_content a:link {
+	text-decoration: underline;
+	color:#0099cc;
+}
+div#info_content a:visited {
+	text-decoration: none;
+	color:#0099cc;	
+}
+div#info_content a:hover {
+	text-decoration: none;
+	color:#0099cc;
+}
+div#info_content a:active {
+	text-decoration: none;
+	color:#0099cc
+} 
+
+/* バナー */
+div#main ul#bnr li{
+	margin-bottom:10px;
+}
+
+/* --------------------------------------------------------
+footer
+-------------------------------------------------------- */
+div#footer{
+	background:url(../images/footer/bg_footer_top.png) top left repeat-x;
+}
+div#footer_content{
+	width:960px;
+	margin:0 auto;
+}
+div#footer_top{
+	height:35px;
+	margin-bottom:20px;
+}
+p#pagetop{
+	 margin-top:10px;
+}
+ul#nav_footer{
+	margin-bottom:20px;
+}
+ul#nav_footer li.float_left{
+	margin-right:20px;
+	padding-left:10px;
+	background:url(../images/content/icon_s.png) left no-repeat;
+}
+ul#footer_sitemap{
+	margin-bottom:25px;
+}
+ul#footer_sitemap li{
+	width:16%;
+	font-size:87.5%;
+}
+ul#footer_sitemap dt{
+	margin-bottom:9px;
+	padding-left:29px;
+	background:url(../images/content/icon_l.png) left no-repeat;
+}
+ul#footer_sitemap dd{
+	margin:0 0 9px 18px;
+	padding-left:10px;
+	background:url(../images/content/icon_s.png) left no-repeat;
+}
+
+/* コピーライト */
+div#copyright{
+	height:60px;
+	background:url(../images/footer/bg_footer_copy.png) top left repeat-x;
+	border-top:4px solid #ccc;
+}
+address{
+	margin-top:24px;
+	color:#fff;
+	text-align:center;
+	font-size:87.5%;
+}

@@ -1,0 +1,193 @@
+@charset "UTF-8";
+/* CSS Document */
+/* ===================================================================
+CSS information
+下層ページスタイル設定
+=================================================================== */
+/* --------------------------------------------------------
+下層ページ共通スタイル
+-------------------------------------------------------- */
+h2.tit_under{
+	margin-bottom:10px;
+	padding:13px 0 13px 25px;
+	font-size:125.0%;
+	border-top:1px solid #d2d2d2;
+	border-bottom:1px solid #d2d2d2;
+	background:url(../images/content/icon_dot.png) left no-repeat;
+}
+h2 img{
+	margin-bottom:20px;
+}
+h3.tit_under{
+	width:648px;
+	height:28px;
+	padding-left:30px;
+	font-size:112.0%;
+	margin-bottom:20px;
+	background:url(../images/content/bg_under_tit.png) left no-repeat;
+}
+.section{
+	margin-bottom:40px;
+}
+#info_under a:link {
+	text-decoration: underline;
+	color:#0099cc;
+}
+#info_under a:visited {
+	text-decoration: none;
+	color:#0099cc;	
+}
+#info_under a:hover {
+	text-decoration: none;
+	color:#0099cc;
+}
+#info_under a:active {
+	text-decoration: none;
+	color:#0099cc
+} 
+/* sidebar */
+
+div#aside h3#btn_reserve{
+	margin-bottom:10px;
+}
+ul#sidenav{
+	margin-bottom:20px;
+}
+ul#sidenav li.l{
+	padding:10px 29px;
+	background:url(../images/content/icon_l.png) left no-repeat;
+	border-bottom:1px solid #ccc;
+}
+ul#sidenav li.s{
+	padding:10px 29px;
+	background:#f8f8f8 url(../images/content/icon_s_side.png) left no-repeat;
+	border-bottom:1px solid #ccc;
+}
+ul#sidenav li a{
+	display:block;
+	text-decoration:none;
+	color:#333;
+	text-shadow: 0 2px 0 #FFFFFF;
+}
+ul#sidenav li.l:hover{
+	background:#ebebeb url(../images/content/icon_l.png) left no-repeat;
+	display:block;
+	text-shadow: 0 2px 0 #FFFFFF;
+}
+ul#sidenav li.s:hover{
+	background:#ebebeb url(../images/content/icon_s_side.png) left no-repeat;
+	display:block;
+}
+ /* pankuzu */
+  
+div#pankuzu{
+	margin-bottom:25px;
+}
+div#pankuzu li.float_left{
+	margin-right:4px;
+	padding-right:10px;
+	background:url(../images/content/icon_pankuzu.png) right no-repeat;
+}
+div#pankuzu li.now{
+	background:none;
+}
+div#pankuzu li a{
+	color:#7e1e35;
+	text-decoration:none;
+}
+div#pankuzu li a:hover{
+	color:#7e1e35;
+	text-decoration:underline;
+}
+
+div#contact_box{
+	padding:25px 25px 15px;
+	background: none repeat scroll 0 0 #f8f8f8;
+    border: 1px solid #ececec;
+    box-shadow: 0 0 2px 2px #ffffff inset;
+    color: #333333;
+	border-radius: 4px;        /* CSS3草案 */  
+    -webkit-border-radius: 4px;    /* Safari,Google Chrome用 */  
+    -moz-border-radius: 4px;   /* Firefox用 */
+}
+
+/* link */
+div#main a{
+	text-decoration:underline;
+}
+	
+/* --------------------------------------------------------
+stay
+-------------------------------------------------------- */
+div#roomtype{
+	margin:20px 0;
+}
+div#roomtype li{
+	width:330px;
+}
+div#roomtype li.float_left{
+	margin:0 20px 20px 0;
+}
+div#roomtype dt{
+	background: none repeat scroll 0 0 #ebebeb;
+    border: 1px solid #ececec;
+    box-shadow: 0 0 1px 1px #ffffff inset;
+	padding:8px 6px;
+	margin-bottom:10px;
+	text-shadow: 0 1px 0 #FFFFFF;
+}
+div#roomtype dd img{
+	margin-right:15px;
+	padding:4px;
+	border:1px solid #ccc;
+}
+div.stay ul#bnr{
+	margin-bottom:40px;
+}
+
+/* --------------------------------------------------------
+ルームタイプ個別
+-------------------------------------------------------- */
+
+div#room_img{
+	height:302px;
+	width:417px;
+	margin-right:18px;
+	padding:7px 0 0 7px;
+	background:url(../images/content/bg_room_photo.png) top left no-repeat;
+}
+ul#slide_nav{
+	margin-left:160px;
+}
+ul#slide_nav li{
+	margin-right:7px;
+}
+div#room{
+	margin-bottom:40px;
+}
+div#room_info table{
+	border:none;
+	border-top:#d2d2d2;
+	border-bottom:#d2d2d2;
+}
+div#room_info th{
+	padding:10px;
+	background:#f2f2f2;
+	border-color:#d2d2d2;
+	box-shadow: 0 0 1px 1px #fff inset;
+	font-size:87.5%;
+}
+div#room_info td{
+	padding:10px;
+	border-color:#d2d2d2;
+	box-shadow: 0 0 1px 1px #fff inset;
+}
+
+dd.thumb img{
+	margin-right:15px;
+	padding:4px;
+	border:1px solid #ccc;
+}
+dd.cat{
+	margin:0 10px 8px 0;
+}

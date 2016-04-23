@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<title>宿泊 | Tokyo Bayside Hotel</title>
+
+<link rel="stylesheet" type="text/css" href="../css/import.css" />
+<link rel="stylesheet" type="text/css" href="../css/under.css" />
+
+<script type="text/javascript" src="../js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../js/calendar-setup.js"></script>
+<script type="text/javascript" src="../js/yuga.js"></script>
+
+<!--[endif]-->
+<!-- IE6,7,8にhtml5の要素を適応-->
+<!--[if lt IE 9]>
+<script type="text/javascript" src="js/html5.js"></script>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<style type="text/css">
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary
+{
+	display:block;
+}
+</style>
+
+<script type="text/javascript"> 
+$(document).ready(
+  function(){
+    $("#gnavi a").hover(function(){
+       $(this).fadeTo("normal", 0.4); // マウスオーバーで透明度を40%にする
+    },function(){
+       $(this).fadeTo("normal", 1); // マウスアウトで透明度を100%に戻す
+    });
+});
+</script> 
+
+</head>
+
+<body> 
+
+<div id="header">
+
+	<div id="header_content" class="clear">
+    
+        <h1 class="float_left"> <a href="../index.html"><img src="../images/header/logo.png" width="273" height="28" alt="Tokyo Bayside Hotel 東京ベイサイドホテル" /></a>
+        </h1>
+        
+            <div id="nav_help" class="float_right">
+            
+                <ul class="clear">
+                  <li id="fontsize" class="float_left"><p class="float_left">
+                      文字の大きさ</p>
+                      <span class="float_left"><a href="#">大</a></span>
+                      <span class="float_left"><a href="#">中</a></span>
+                      <span class="float_left"><a href="#">小</a></span>
+                  </li>
+                  <li id="contact" class="float_left"><a href="#">お問合せ</a></li>
+                  <li id="question" class="float_left"><a href="#">良くある質問</a></li>
+                  <li id="sitemap" class="float_left"><a href="#">サイトマップ</a></li>
+                </ul>
+                
+                <div id="search_box" class="right clear">
+                	<p id="search_btn" class="float_right">
+                        <input name="search" type="button" value="検索" />
+                    </p>
+                    <p id="search_form" class="float_right">
+                        <input name="search" type="text" value="" />
+                    </p>
+                </div>
+                
+            </div><!-- /#nav_help -->
+            
+    </div><!-- / #header_content -->
+    
+</div><!-- /#header -->
+
+<div id="gnavi">
+
+	<ul class="clear">
+		<li id="gnavi_stay" class="float_left">
+      		<a href="index.html"><img src="../images/gnavi/gnavi_stay.png" width="188" height="72" alt="宿泊" /></a>
+      	</li>
+	  	<li id="gnavi_rb" class="float_left">
+      		<a href="#"><img src="../images/gnavi/gnavi_rb.png" width="188" height="72" alt="レストラン・バー" /></a>
+      	</li>
+	  	<li id="gnavi_sp" class="float_left">
+      		<a href="#"><img src="../images/gnavi/gnavi_sp.png" width="188" height="72" alt="会議・パーティ" /></a>
+      	</li>
+	 	<li id="gnavi_wedding" class="float_left">
+      		<a href="#"><img src="../images/gnavi/gnavi_wedding.png" width="188" height="72" alt="ウエディング" /></a>
+      	</li>
+	  	<li id="gnavi_hotelguide" class="float_left">
+      		<a href="#"><img src="../images/gnavi/gnavi_hotelguide.png" width="188" height="72" alt="ホテルガイド" /></a>
+      	</li>
+	</ul>
+    
+</div><!-- /#gnavi -->
+
+
+
+<div id="content" class="clear">
+
+	<div id="aside" class="float_left">
+    
+    <h3 id="btn_reserve"><a href="#"><img src="../images/side/btn_reserve.png" width="200" height="35" alt="宿泊ご予約の方はこちら" class="btn" /></a></h3>
+    
+    <ul id="sidenav">
+      <li>
+      	<img src="../images/side/tit_stay.png" width="200" height="53" alt="宿泊" /></li>
+      <li class="l">
+  	  <a href="index.html">ルームタイプ</a></li>
+          <li class="s">
+       	  <a href="single.html">シングル</a></li>
+          <li class="s">
+       	  <a href="#">ダブル</a></li>
+          <li class="s">
+       	  <a href="#">ツイン</a></li>
+          <li class="s">
+       	  <a href="#">スイート</a></li>
+		<li class="l">
+ 	  <a href="#">プラン</a></li>
+    </ul><!-- / #sidenav -->
+    
+        <ul class="sidebnr">
+          <li><a href="#"><img src="../images/side/bnr_interview.png" width="200" height="80" alt="わたしたちの想い ホテルスタッフインタビュー" /></a></li>
+          <li><a href="#"><img src="../images/side/bnr_album.png" width="200" height="80" alt="みんなで撮ろう！オーシャンビューアルバム" /></a></li>
+        </ul>
+        
+    </div><!-- / #aside -->
+    
+    <div id="main" class="stay float_left">
+    
+    	<div id="pankuzu">
+       	<ol>
+        <li class="float_left"><a href="../index.html">ホーム</a></li>
+        <li class="float_left now">宿泊</li>
+        </ol>
+        </div><!-- /#pankuzu -->
+        
+        <h2><img src="../images/content/img_stay.png" width="680" height="161" alt="ご宿泊のご案内 お客様に合わせた様々なルームタイプを用意しております。" /></h2>
+        
+        <h3 class="tit_under">ルームタイプから探す</h3>
+        
+        <p>ゲストルームの優雅なインテリアは、ワンランク上の居心地を感じていただくために。<br />
+		繊細なおもてなしは、ゲストの皆様に心からおくつろぎいただくために。<br />
+		ゲストの皆様に 心地よいご滞在をお約束いたします。</p>
+         
+       	<div id="roomtype">
+        <ul class="clear">
+            <li class="float_left">
+                <dl>
+                    <dt><a href="single.html">シングルルーム</a></dt>
+                    <dd class="float_left"><img src="../images/content/img_03.png" width="114" height="114"alt="シングルルーム" /></dd>
+                    <dd>ビジネスやレジャーなどの際にお気軽にご利用いただけます。</dd>
+                </dl>
+            </li>
+            <li class="float_right">
+                <dl>
+                    <dt><a href="#">ダブルルーム</a></dt>
+                    <dd class="float_left"><img src="../images/content/img_04.png" width="114" height="114" alt="ダブルルーム" /></dd>
+                    <dd>お1人様ならゆったりと、お2人様で仲良く、どちらにも対応するお部屋です。</dd>
+                </dl>
+            </li>
+            <li class="float_left">
+                <dl>
+                    <dt><a href="#">ツインルーム</a></dt>
+                    <dd class="float_left"><img src="../images/content/img_05.png" width="114" height="114" alt="ツインルーム" /></dd>
+                    <dd>出張や、お友達同士・ご夫婦でのご旅行などにおすすめです。</dd>
+                </dl>
+            </li>
+            <li class="float_right">
+                <dl>
+                    <dt><a href="#">スイートルーム</a></dt>
+                    <dd class="float_left"><img src="../images/content/img_06.png" width="114" height="114" alt="スイートルーム" /></dd>
+                    <dd>当ホテルで最もグレードの高い特別ルームです。優雅でぜいたくなご滞在をご希望の方に。どうぞ心地よい時間を存分にお楽しみください。</dd>
+                </dl>
+            </li>
+        </ul>
+        </div><!-- /#roomtype -->
+        
+        <h3 class="tit_under">おすすめプラン<span class="more float_right"><a href="#">プラン一覧を見る</a></span></h3>
+        
+        <ul id="bnr" class="clear">
+		  	<li class="float_left">
+            	<a href="#"><img src="../images/content/bnr_mikaku.png" width="335" height="80" alt="旬の味覚を楽しむ お得な鍋コース付きプラン" /></a>
+                </li>
+		  	<li class="float_right">
+            	<a href="#"><img src="../images/content/bnr_wedding.png" width="335" height="80" alt="ファミリーウエディングプラン" /></a>
+            </li>
+          	<li class="float_left">
+            <a href="#"><img src="../images/content/bnr_capple.png" width="335" height="80" alt="カップル限定晩酌プラン 豪華なコースをキャンペーン価格で！" /></a>
+            </li>
+		  <li class="float_right">
+          <a href="#"><img src="../images/content/bnr_hanabi.png" width="335" height="80" alt="オーシャンビュールームから花火を見よう！" /></a>
+          </li>
+		</ul>
+        
+    	<div id="info">
+        
+    	  <h2 class="tit clear">
+         	 <img src="../images/content/tit_infomation.png" width="140" height="14" alt="新着情報 pick upp news" />
+             <span class="more float_right"><a href="#">一覧を見る</a></span>
+          </h2>
+          
+          <div id="info_content">
+          
+              <ul id="pickup" class="clear">
+                <li class="float_left">
+                
+               		<dl class="clear">
+                        <dd class="thumb float_left"><img src="../images/content/img_01.png" width="114" height="114" alt="ニュースイメージ" /></dd>
+                        <dd class="cat"><img src="../images/content/icon_plan.png" width="70" height="19" alt="プラン" /></dd>
+                        <dt><a href="#">東日本大震災関連活動情報提供のお願い</a></dt>
+                        <dd>震災復興支援活動について情報収集を行っております。[<a href="#">...</a>]</dd>
+                	</dl>
+                    
+                </li>
+                <li class="float_right">
+                
+                	<dl class="clear">
+                        <dd class="thumb float_left"><img src="../images/content/img_02.png" width="114" height="114" alt="ニュースイメージ" /></dd>
+                        <dd class="cat"><img src="../images/content/icon_plan.png" width="70" height="19" alt="プラン" /></dd>
+                        <dt><a href="#">初夏恒例イベントの開催</a></dt>
+                        <dd>今年もやってきました！初夏恒例の花火大会の開催です。[<a href="#">...</a>]</dd>
+                	</dl>
+                    
+                </li>
+              </ul>
+              
+              <dl class="clear">
+                <dd class="float_left cat"><img src="../images/content/icon_plan.png" width="70" height="19" alt="プラン" /></dd>
+                <dt><a href="#">期間限定お得なプラン「オーシャンビューから花火を見ようプラン」登場！</a></dt>
+              </dl>
+              
+              <dl class="clear">
+                <dd class="float_left cat"><img src="../images/content/icon_plan.png" width="70" height="19" alt="プラン" /></dd>
+                <dt><a href="#">夏期の休業日についてのお知らせ</a></dt>
+              </dl>
+              
+              <dl class="clear">
+                <dd class="float_left cat"><img src="../images/content/icon_plan.png" width="70" height="19" alt="プラン" /></dd>
+              	<dt><a href="#">友達を誘って旅行券をゲットしよう！ANAキャンペーン開始いたしました！</a> </dt>
+              </dl>
+              
+          </div><!-- / #info_content -->
+          
+    	</div><!-- / #info -->
+        
+    </div><!-- / #main -->
+    
+</div><!-- / #content -->
+
+<div id="footer">
+
+	<div id="footer_content">
+    
+    	<div id="footer_top" class="clear">
+        
+        	<p class="float_left">
+            	<img src="../images/footer/btn_footer_reservation.png" width="173" height="32" alt="宿泊・プランを検索する"  class="btn" />
+            </p>
+            <p id="pagetop" class="float_right">
+            	<a href="#header"><img src="../images/footer/btn_pagetop.png" width="102" height="13" alt="ページトップへ" class="btn" /></a>
+            </p>
+            
+        </div><!-- / #footer_top -->
+        
+        <ul id="nav_footer" class="clear">
+          <li class="float_left"><a href="#">プライバシーポリシー</a></li>
+          <li class="float_left"><a href="#">個人情報の取り扱い</a></li>
+          <li class="float_left"><a href="#">採用情報</a></li>
+          <li class="float_left"><a href="#">会社概要</a></li>
+        </ul>
+        
+        <ul id="footer_sitemap" class="clear">
+          <li class="float_left">
+          
+            <dl>
+              <dt><a href="#">宿泊</a></dt>
+              <dd><a href="#">部屋</a></dd>
+              <dd><a href="#">プラン</a></dd>
+            </dl>
+            
+          </li>
+          <li class="float_left">
+            <dl>
+            
+              <dt><a href="#">レストラン・バー</a></dt>
+              <dd><a href="#">レストラン</a></dd>
+              <dd><a href="#">バー</a></dd>
+            </dl>
+            
+          </li>
+          <li class="float_left">
+          
+            <dl>
+              <dt><a href="#">会場・パーティ</a></dt>
+              <dd><a href="#">プラン</a></dd>
+              <dd><a href="#">会場</a></dd>
+            </dl>
+            
+          </li>
+          <li class="float_left">
+          
+            <dl>
+              <dt><a href="#">ウエディング</a></dt>
+              <dd><a href="#">プラン</a></dd>
+              <dd><a href="#">会場</a></dd>
+            </dl>
+            
+          </li>
+          <li class="float_left">
+          
+            <dl>
+              <dt><a href="#">ホテルガイド</a></dt>
+              <dd><a href="#">施設</a></dd>
+              <dd><a href="#">アクセスマップ</a></dd>
+              <dd><a href="#">周辺施設</a></dd>
+              <dd><a href="#">インタビュー</a></dd>
+              <dd><a href="#">お知らせ</a></dd>
+            </dl>
+            
+          </li>
+          <li class="float_left">
+          
+            <dl>
+              <dt><a href="#">ホーム</a></dt>
+              <dd><a href="#">お問合せ</a></dd>
+              <dd><a href="#">良くある質問</a></dd>
+              <dd><a href="#">サイトマップ</a></dd>
+              <dd><a href="#">オーシャンビュー<br />アルバム</a></dd>
+            </dl>
+            
+          </li>
+        </ul><!-- / #footer_sitemap .clear -->
+        
+    </div><!-- / #footer_content -->
+    
+</div><!-- / #footer -->
+
+<div id="copyright">
+
+	<address>Copyright © 2012 Tokyo Beyside Hotel All Rights Reserved. </address>
+    
+</div><!-- / #copyright -->
+
+</body>
+</html>
