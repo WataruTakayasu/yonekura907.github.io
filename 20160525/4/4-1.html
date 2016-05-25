@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>jQuery 便利メソッド</title>
+
+</head>
+<body>
+
+<div id="trim"> ほげ </div>
+<ul>
+  <li>みそだ</li>
+  <li>ことり</li>
+  <li>ぜん</li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+<script>
+;(function(){
+
+  // DOMContentLoaded
+  $(function(){
+
+    //-----------------
+    // trim
+    // ----------------
+    var text = $('#trim').text();
+    console.log(text);
+    text = $.trim(text);
+    console.log(text);
+
+
+    //-----------------
+    // each
+    // ----------------
+
+    // 配列
+    var charactors = ['みそだ', 'ことり', 'ぜん', 'すのびっけ', 'ぶっとぱっと'];
+    $.each(charactors, function(index, value){
+      console.log(index+'番目の要素は'+ value + 'です。');
+    });
+
+    // オブジェクト
+    var profile = {name: 'takeda', age: 35, address: 'Taito'};
+    $.each(profile, function(key, value){
+      console.log(key + ':' + value);
+    });
+
+    // DOM要素に対してeachをしてみる
+    $('li').each(function(){
+      console.log($(this).text());
+    });
+
+
+
+    // ------------------
+    // map
+    // ------------------
+
+    // var charactors = ['みそだ', 'ことり', 'ぜん', 'すのびっけ', 'ぶっとぱっと'];
+    // var result = $.map(charactors, function(value, index){
+    //   console.log(value);
+    //   console.log(index);
+    //
+    //   return value + 'さん';
+    // });
+    //
+    // console.log(result);
+
+    // オブジェクトの配列から特定のプロパティの配列をつくる
+    var charactors =[{name: 'takeda', age: 35},{name: 'furuya', age: 30}];
+
+    var result = $.map(charactors, function(value, index){
+      return value.name;
+    });
+
+    console.log(result);
+
+
+    // ------------------
+    // filter
+    // ------------------
+    // var numbers = [10, 20, 5, 1, 12, 15];
+    // var result =  $.filter(numbers, function(value, index){
+    //   return value < 10;
+    // });
+
+    // $('li').filter(function(index, value){
+    //   return index === 1;
+    // }).css({background: 'red'});
+
+    $('li').filter(':even').css({background :'blue'});
+
+
+
+    // ------------------
+    // extend
+    // ------------------
+    var user1 = {name: 'takeda', age: 35, address: 'Taito'};
+    var user2 = {blood: 'AB'};
+    var hoge = $.extend(user1, user2);
+    console.log(hoge);
+
+
+
+    var school = {
+      mottojs:{
+        teacher: 'Takeda',
+        students:['Tubasa', 'Yonekura']
+      }
+    };
+
+    var schoolCpy = {};
+
+    // shallow Copy
+    // 参照渡しの状態になる。完全コピーではなくてアドレスの参照をしている。
+    $.extend(schoolCpy, school);
+    console.log(schoolCpy);
+
+    // Deep Copy
+    // 完全コピー、メモリ上別データになる。
+    $.extend(true,schoolCpy, school);
+    console.log(schoolCpy);
+
+
+
+    // extend例
+    var dog = {
+    	bark: 'わんわん！'
+    };
+
+    var taro = $.extend({name: 'taro'}, dog);
+
+    console.log( taro.name );
+    console.log( taro.bark );
+
+    var jiro = $.extend({name: 'jiro'}, dog);
+
+    console.log( jiro.name );
+    console.log( jiro.bark );
+
+
+
+    // ------------------
+    // unique　重複のデータが残らない
+    // ------------------
+    var numbers = [1,2,3,4,3,2,1];
+    var data = $.unique(numbers);
+    console.log(data);
+
+
+    // ------------------
+    // merge 重複のデータが残る
+    // ------------------
+    var data1 = [1,2,3];
+    var data2 = [3,4,5];
+    var newData = $.merge(data1, data2);
+    console.log(newData);
+
+
+
+  });
+
+})();
+</script>
+</body>
+</html>

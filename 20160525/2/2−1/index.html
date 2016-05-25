@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>参照と実体</title>
+</head>
+<body>
+
+  <script>
+  ;(function(){
+    // ------------------
+    // 実体と参照
+    // ------------------
+
+    // 実体
+    var num1 = 10;
+    var num2 = num1;
+    num2 = 100;
+
+    console.log("num1:"+num1);
+    console.log("num2:"+num2);
+
+
+
+    // 参照
+    var jscourse = {
+      main: 'たけだ',
+      sub: 'おうぎ',
+      student: 'よねくら'
+    }
+
+    var jscourse2 = jscourse;
+    jscourse2.student2 = 'こだか';
+
+    console.log(jscourse);
+    console.log(jscourse2);
+
+
+    // オブジェクトのコピー
+    var jscourse3 = {};
+    for (var prof in jscourse) {
+      console.log(prof);
+      jscourse3[prof] = jscourse[prof];
+    }
+    jscourse3.student3 = 'つばさ';
+    console.log(jscourse);
+    console.log(jscourse3);
+
+
+
+
+  })();
+  </script>
+
+</body>
+</html>

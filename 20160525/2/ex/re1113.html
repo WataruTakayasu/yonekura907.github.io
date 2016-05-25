@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+</head>
+
+<body>
+<h1>ex2-2</h1>
+<div id="control">
+    <button id="push-button">最後にひとつ増やす</button>
+    <button id="unshift-button">最初にひとつ増やす</button>&nbsp;
+    <button id="pop-button">最後からひとつ減ら</button>&nbsp;
+    <button id="shift-button">最初からひとつ減ら</button>
+</div>
+<ul id="output-list">
+  <li>aaaaaaaaaa</li>
+</ul>
+
+<script>
+;(function(){
+
+  var d = document;
+  var count = 0;
+  var colors = ['red','yellow','blue','green'];
+  var colorCount = 0;
+  var outputList = null;
+
+  d.addEventListener('DOMContentLoaded',function(evt){
+    setEvent();
+  });
+
+  var setEvent = function(){
+    outputList = d.querySelector('#output-list');
+
+    d.querySelector('#push-button').addEventListener('click', pushList, false);
+    d.querySelector('#unshift-button').addEventListener('click', unShiftList, false);
+    d.querySelector('#pop-button').addEventListener('click', popList, false);
+    d.querySelector('#shift-button').addEventListener('click', shiftList, false);
+
+  }
+
+  var pushList = function(){
+    var getElement = createList();
+    outputList.appendChild(getElement);
+  }
+
+  var unShiftList = function(){
+    var getElement = createList();
+    outputList.insertBefore(getElement,outputList.firstChild);
+  }
+
+  var createList = function(){
+    count++;
+
+    var liElm = d.createElement('li');
+    var text = d.createTextNode(count + '個目')
+    liElm.appendChild(text);
+    liElm.style.backgroundColor = colors[getColor()];
+    return liElm;
+  }
+
+  var popList = function(){
+    if(outputList.childNodes){
+      outputList.removeChild(outputList.lastChild);
+    }
+
+  }
+
+  var shiftList = function(){
+    if(outputList.childNodes){
+      outputList.removeChild(outputList.firstChild);
+    }
+  }
+
+  var getColor = function(){
+
+    if(colorCount === colors.length -1){
+      colorCount = 0;
+    } else {
+      colorCount++;
+    }
+    console.log(colorCount);
+
+    return colorCount;
+
+  }
+
+})();
+</script>
+</body>
+</html>

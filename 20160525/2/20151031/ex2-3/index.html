@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">ON</button>
+    
+    <script>
+    ;(function(){
+        // document.addEventListener('DOMContentLoaded', function(){
+        //     var btnEl = document.querySelector('#btn');
+        //     btnEl.addEventListener('click', function(evt){
+        //         changeBtn();
+        //     }, false);
+        // });
+        // 
+        // var isBtn = true;
+        // var changeBtn = function(){
+        //     var btnEl = document.querySelector('#btn');
+        //     if(isBtn){
+        //         btnEl.innerHTML = 'OFF';
+        //     }
+        //     else {
+        //         btnEl.innerHTML = 'ON';
+        //     }
+        //     // ボタンがtrueならばfalse or falseならばtrue
+        //     isBtn = !isBtn
+        // };
+        
+        document.addEventListener('DOMContentLoaded', function(){
+            
+            var doChange = changeBtn();
+            console.log(changeBtn);
+            console.log(doChange);
+            
+            
+            var btnEl = document.querySelector('#btn');
+            btnEl.addEventListener('click', function(evt){
+                doChange();
+            }, false);
+        });
+        
+        var changeBtn = function(){
+            var isBtn = true;
+            
+            var hoge = function(){
+                var btnEl = document.querySelector('#btn');
+                // 三項演算子
+                btnEl.innerHTML = (isBtn) ? 'OFF' : 'ON';
+                // ボタンがtrueならばfalse or falseならばtrue
+                isBtn = !isBtn;
+            }
+            return hoge;
+            // return function(){
+            //     var btnEl = document.querySelector('#btn');
+            //     // 三項演算子
+            //     btnEl.innerHTML = (isBtn) ? 'OFF' : 'ON';
+            //     // ボタンがtrueならばfalse or falseならばtrue
+            //     isBtn = !isBtn;
+            // };
+        };
+        
+        
+        
+        
+        
+        
+    })();
+    
+    
+    
+    
+    </script>
+
+</body>
+</html>

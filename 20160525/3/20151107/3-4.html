@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn0" name="button">ローカルストレージに何か保存する</button>
+    <button id="btn1" name="button">ローカルストレージから値を取得する</button>
+
+    <button id="btn2" name="button">ローカルストレージの値の更新</button>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        $(function(){
+            setEvent();
+        })
+        
+        var cnt = 0;
+        var dataList = [];
+        var setEvent = function(){
+            $('#btn0').on('click', function(evt){
+                cnt++;
+                // 保存するデータ
+                var obj = {
+                    no: cnt,
+                    name: 'takeda',
+                    age: 35
+                };
+                dataList.push(obj);
+                
+                // ObjectをJSONに変換
+                var json = JSON.stringify(dataList);
+                // キーを「sample」としてデータを保存
+                window.localStorage.setItem('sample', json);
+            });
+            
+            $('#btn1').on('click', function(evt){
+                // ローカルストレージから値を取得する
+                var json = window.localStorage.getItem('sample');
+                
+                // JSONからObjectに変換
+                var dataList = JSON.parse(json);
+                for(var cnt=0, len=dataList.length; cnt<len; cnt++){
+                    console.log(dataList[cnt].name);
+                    console.log(dataList[cnt].age);
+                    console.log(dataList[cnt].no);
+                }
+            });
+            
+            // ストレージの更新
+            $('#btn2').on('click', function(){
+                // ローカルストレージから値を取得する
+                var json = window.localStorage.getItem('sample');
+                
+                // JSONからObjectに変換
+                var datalist = JSON.parse(json);
+                var obj = {
+                    name: 'おうぎ',
+                    age: 24,
+                    no: 100
+                };
+                datalist.push(obj);
+                
+                // ObjectからJSONに変換
+                var jsonData = JSON.stringify(datalist);
+                // 更新したデータを保存
+                window.localStorage.setItem('sample', jsonData);
+            });
+        };
+        
+    })();
+    
+    </script>
+</body>
+</html>

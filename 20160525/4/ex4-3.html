@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>演習：jQueryプラグイン</title>
+<style>
+#charactors li{
+  list-style: none;
+  float:left;
+}
+</style>
+</head>
+<body>
+
+<button id="btn">押せ</button>
+
+<ul id="charactors">
+  <li><img src="images/misoda.png" alt="みそだ"></li>
+  <li><img src="images/kotori.png" alt="ことり"></li>
+  <li><img src="images/zen.png" alt="ぜん"></li>
+  <li><img src="images/snovicke.png" alt="すのびっけ"></li>
+  <li><img src="images/budpad.png" alt="ぶっとぱっと"></li>
+</ul>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+;(function(){
+
+    var count = -1;
+
+    $(function(){
+      setEvent();
+    });
+
+    var setEvent =function(){
+      $('#btn').on('click',function(){
+        startAnimation();
+      });
+    };
+
+    var startAnimation = function(){
+
+      var liCount = charaCount();
+      console.log(liCount);
+
+      var liElms = $('#charactors').find('li');
+      console.log(liElms[0]);
+      $(liElms[liCount]).fadeOutIn();
+
+    };
+
+
+    var charaCount = function(){
+      count++;
+
+      if(count%5 === 0){
+        count = 0;
+      }
+      return count;
+
+    };
+
+
+
+    // jQueryプラグイン 点滅
+    // 1. 即時関数で囲む、jQueryオブジェクトを引数として渡しておく
+    (function($){
+
+      // 2. $.fn.xxxxとして定義する
+      $.fn.fadeOutIn = function(){
+
+        console.log(this);
+        this.animate({opacity:0})
+            .animate({opacity:1});
+
+
+        // 3. メソッドチェーンに対応するため
+        return this;
+      }
+
+    })(jQuery);
+
+})();
+</script>
+</body>
+</html>

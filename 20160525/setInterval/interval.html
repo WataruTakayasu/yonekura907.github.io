@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document</title>
+<link rel="stylesheet" href="css/style.css">
+<script src="js/jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+
+	var timer = setInterval(torimove,100);
+	var posX = 0;
+
+	var count = 1;
+
+	function torimove(){
+
+		if(count>4){
+			count=1;
+		}	
+					
+		console.log(count);
+		var tori = $("#tori");
+		var toriImg = $(tori).find("img");
+		$(tori).css({"left":posX+"px"});
+		$(toriImg).attr("src","img/ame0"+count+".png");
+
+
+		count++;
+		posX += 10;
+	}
+});
+</script>
+</head>
+<body>
+
+<div id="main">
+	<div id="tori"><img src="img/ame01.png" height="150" width="150" alt=""></div>
+</div>
+	
+</body>
+</html>

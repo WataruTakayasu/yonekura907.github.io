@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>closure</title>
+</head>
+<body>
+
+<button id="btn0">押せ0！</button>
+<button id="btn1">押せ1！</button>
+
+<button id="btn2">押せ2！</button>
+<button id="btn3">押せ3！</button>
+
+<script>
+;(function(){
+
+  // var count = 0;
+  //
+  // document.addEventListener('click',function(evt){
+  //   // console.log(count++);
+  //   console.log(++count);
+  // }, false);
+  //
+  //
+  //
+  //
+
+  var getCounter = function(){
+
+    var counter = 0;
+    // var innerCounter = function(){
+    //
+    // }
+    // return innerCounter;
+
+    // returnで無名関数を返す
+    return function(){
+
+      counter++;
+      console.log('現在のカウントは'　+ counter + 'です');
+
+    };
+  }
+
+  var counter1 = getCounter();
+
+  document.querySelector('#btn0').addEventListener('click',function(evt){
+    counter1();
+  }, false);
+
+  document.querySelector('#btn1').addEventListener('click',function(evt){
+    counter1();
+  }, false);
+
+
+  var counter2 = getCounter();
+  document.querySelector('#btn2').addEventListener('click',function(evt){
+    counter2();
+  }, false);
+
+
+  var counter3 = getCounter();
+  document.querySelector('#btn3').addEventListener('click',function(evt){
+    counter3();
+  }, false);
+
+})();
+</script>
+</body>
+</html>

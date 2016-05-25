@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>DOM 操作</title>
+
+</head>
+<body>
+
+<ul></ul>
+
+<button id="check-btn">チェック</button>
+<input type="checkbox" name="hobby" id="sports" value="1">
+<label for="sports">スポーツ</label>
+<input type="checkbox" name="hobby" id="reading" value="2">
+<label for="reading">読書</label>
+<input type="checkbox" name="hobby" id="travel" value="3">
+<label for="travel">旅行</label>
+
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+;(function(){
+
+  // DOMContentLoaded
+  $(function(){
+
+    // var liEl = document.createElement('li');
+    // liEl.innerHTML = 'これはli要素だよ';
+
+    // 　append / appendTo
+    var $liElm = $('<li>').text('これはli要素だよ');
+    $('ul').append($liElm);
+
+    var $liElm = $('<li>').text('これはli要素だよ(appendTo)');
+    $($liElm).appendTo($('ul'));
+
+    // 子要素　prepend
+    var $liElFirst = $('<li>').text('先頭に追加');
+    $('ul').prepend($liElFirst);
+    // console.log($liElFirst);
+
+    //弟さん要素に追加
+    var $afterEl = $('<div>').text('after');
+    $('ul').after($afterEl)
+
+    //兄さん要素に追加
+    var $beforeEl = $('<div>').text('before');
+    $('ul').before($beforeEl);
+
+    // 子要素の削除
+    // $('ul').empty();
+
+    // 子要素の削除
+    // $('ul').empty();
+
+
+    // チェックした項目のidを取得する
+    $('#check-btn').on('click',function(){
+
+      var checked = $('input[name=hobby]:checked').map(function(index, value){
+        return value;
+      });
+      console.log(checked);
+
+      for (var cnt = 0; cnt < checked.length; cnt++) {
+        console.log(checked[cnt].id);
+      }
+
+    });
+
+  });
+
+})();
+</script>
+</body>
+</html>

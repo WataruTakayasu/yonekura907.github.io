@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>4-2 DOM操作</title>
+</head>
+<body>
+    <ul></ul>
+
+    <button id="check-btn">チェック</button>
+    <input type="checkbox" name="hobby" id="sport" value="sport">
+    <label>スポーツ</label>
+    <input type="checkbox" name="hobby" id="reading" value="reading">
+    <label>読書</label>
+    <input type="checkbox" name="hobby" id="travel" value="travel">
+    <label>旅行</label>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+
+        $(function(){
+            // var liEl = document.createElement('li');
+            // liEl.innerHTML = 'これはli要素だよ';
+            var $liEl = $('<li>').text('これはli要素だよ');
+            $('ul').append($liEl);
+
+            var $liEl = $('<li>').text('これはli要素だよ(appedTo)');
+            $liEl.appendTo($('ul'));
+            
+            // 子要素
+            var $liElFirst = $('<li>').text('先頭に追加');
+            $('ul').prepend($liElFirst);
+            
+            // 弟さん要素に追加
+            var $afterEl = $('<div>').text('after');
+            $('ul').after($afterEl);
+            
+            // お兄さん要素
+            var $beforeEl = $('<div>').text('before');
+            $('ul').before($beforeEl);
+            
+            // 子要素の削除
+            // $('ul').empty();
+            
+            $('#check-btn').on('click', function(){
+                var checked = $('input[name=hobby]:checked').map(function(index, value){
+                    return value;
+                });
+
+                for(var cnt=0, len=checked.length; cnt<len; cnt++){
+                    console.log(checked[cnt].value);
+                }
+            });
+        });
+
+    })();
+    </script>
+</body>
+</html>

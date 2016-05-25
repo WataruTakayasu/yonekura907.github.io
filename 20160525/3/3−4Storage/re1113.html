@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title></title>
+<style type="text/css">
+.font-large {
+    font-size: 50px;
+}
+.font-medium {
+    font-size: 24px;
+}
+.font-small {
+    font-size: 16px;
+}
+</style>
+</head>
+<body>
+<div id="control">
+  <button id="large-btn">大</button>
+  <button id="medium-btn">中</button>
+  <button id="small-btn">小</button>
+</div>
+<div id="view" class="font-medium">こんちには</div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+;(function(){
+  $(function(){
+
+    loadFontSize();
+    setEvent();
+
+  });
+
+  var setEvent = function(){
+    $('#large-btn').on('click',function(evt){
+      saveFontSize('large');
+    });
+    $('#medium-btn').on('click',function(evt){
+      saveFontSize('medium');
+    });
+    $('#small-btn').on('click',function(evt){
+      saveFontSize('small');
+    });
+  }
+
+  var saveFontSize = function(aSize){
+    var obj = {size : aSize};
+    window.localStorage.setItem('font-size',JSON.stringify(obj));
+
+    changeFontSize(aSize);
+  }
+
+  var changeFontSize = function(aSize){
+
+    $('#view').removeClass().addClass('font-' + aSize);
+    console.log(aSize);
+
+  }
+
+  var loadFontSize = function(){
+
+    var data = window.localStorage.getItem('font-size');
+
+    if(data){
+      var fontSize = JSON.parse(data);
+      console.log(fontSize);
+      changeFontSize(fontSize.size);
+    }
+
+    console.log('loadFontSize');
+  }
+
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>参照と実体</title>
+</head>
+<body>
+
+  <script>
+  ;(function(){
+
+    // 配列の参照渡し
+    var shiritori = ['りんご','ごりら','らっぱ'];
+    var shiritori2 = shiritori;
+    shiritori2.push('ぱんだ');
+    console.log(shiritori2);
+    console.log(shiritori);
+    console.log(shiritori === shiritori2);
+
+
+    var shiritori3 = ['りんご','ごりら','らっぱ'];
+    // 参照場所が違うのでfalse
+    console.log(shiritori2 === shiritori3);
+
+
+
+  })();
+  </script>
+
+</body>
+</html>

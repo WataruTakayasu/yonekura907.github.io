@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>closure</title>
+</head>
+<body>
+
+<button id="btn">ON</button>
+
+
+<script>
+;(function(){
+
+  // ------------------------
+  // ボタンのON/OFF　
+  // ------------------------
+
+　// クロージャなし
+  // document.addEventListener('DOMContentLoaded',function(){
+  //
+  //   ボタンのON/OFF
+  //   var btnEl = document.querySelector("#btn");
+  //   btnEl.addEventListener('click',function(evt){
+  //     changeBtn();
+  //   }, false);
+  // });
+  //
+  // var isBtn = true;
+  // var changeBtn = function(){
+  //   var btnEl = document.querySelector("#btn");
+  //
+  //   if(isBtn){
+  //     btnEl.innerHTML = 'OFF';
+  //   } else {
+  //     btnEl.innerHTML = 'ON';
+  //   }
+  //
+  //   // ボタンがtrueならgalse or falseならばtrue
+  //   isBtn = !isBtn;
+  // }
+
+
+  // クロージャ
+  document.addEventListener('DOMContentLoaded',function(){
+
+    var doChange = changeBtn();
+
+    var btnEl = document.querySelector("#btn");
+
+    btnEl.addEventListener('click',function(evt){
+       doChange();
+    }, false);
+  });
+
+
+  var changeBtn = function(){
+
+    var isBtn = true;
+
+    return function(){
+      var btnEl = document.querySelector("#btn");
+
+      // if 文
+      // if(isBtn){
+      //   btnEl.innerHTML = 'OFF';
+      // } else {
+      //   btnEl.innerHTML = 'ON';
+      // }
+
+      // 三項演算子
+      btnEl.innerHTML = (isBtn) ? 'OFF' : 'ON';
+
+      isBtn = !isBtn;
+    };
+  }
+
+})();
+</script>
+</body>
+</html>

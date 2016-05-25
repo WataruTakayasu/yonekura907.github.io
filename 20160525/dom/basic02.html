@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>JavaScript</title>
+<style>
+#container{
+	width:800px;
+	height:600px;
+	position: relative;
+	background-color: #EDEDED;
+	overflow: hidden;
+}
+#zoogoo{
+	width:190px;
+	height: auto;
+	position: absolute;
+	left: 0;
+	top:10px;
+}
+#btn1,#btn2,#btn3{
+	width: 200px;
+	height: 40px;
+	background-color: #CCC;
+	border-radius: 10px;
+	text-align: center;
+	margin-bottom: 10px;
+	line-height: 2.5;
+	cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+	<div id="btn1">右へ移動</div>
+	<div id="btn2">右へアニメ</div>
+	<div id="btn3">停止</div>
+	<div id="container">
+		<div id="zoogoo"><img src="img/zoogoo_walk1.png" height="182" width="190" alt=""></div>	
+	</div>
+
+<script>
+var posNum = 0;
+var aniLeft;
+var zoogoo = document.getElementById('zoogoo');
+
+document.getElementById('btn1').onclick=function() {
+	moveLeft();
+};
+
+document.getElementById('btn2').onclick=function() {
+	animeLeft();	
+};
+
+document.getElementById('btn3').onclick=function() {
+	stopAnime();
+}
+
+function moveLeft() {
+	posNum += 10;
+	
+	if(posNum > 800){
+		posNum = -100;
+	}
+	zoogoo.style.left = posNum + 'px';
+}
+
+function animeLeft(){
+	aniLeft = setInterval(moveLeft,100);
+}
+
+function stopAnime(){
+	clearInterval(aniLeft);
+}
+
+
+</script>
+</body>
+</html>

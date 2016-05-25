@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="add-btn" name="button">追加</button>
+    <button id="onetime-btn" name="button">1回しか押せないボタン</button>
+    
+    <div id="output-area">
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        // DOMの読み込みが完了したらsetEventを実行する
+        $(function(){
+            setEvent();
+        });
+        
+        var setEvent = function(){
+            var cnt = 0;
+            // 追加ボタンにclickイベントを付与
+            $('#add-btn').on('click', function(evt){
+                cnt++;
+                var $divElm = $('<div>');
+                $divElm.id = 'add-' + cnt;
+                $divElm.html(cnt + '. ここをクリックしてね!' + '<br>');
+                $('#output-area').append($divElm);
+            });
+            
+            // 動的に追加したdivに対してイベントを設定
+            $('#output-area').on('click', 'div', function(evt){
+                // JavaScriptオブジェクトを使用した方法
+                console.log(evt.target.innerHTML);
+                // jQueryオブジェクトを使用した方法
+                console.log($(evt.target).html());
+            });
+        };
+        
+        
+        $('#onetime-btn').on('click', function(evt){
+            alert();
+            // onetime-btnのイベントを解除
+            $('#onetime-btn').off('click');
+        });
+    })();
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+
