@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+幅：<input type="text" id="w" name="w">
+高さ：<input type="text" id="h" name="h">
+<button id="calc-btn" name="button">計算</button>
+<div id="output-area"></div>
+
+
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+;(function(){
+
+  // 四角形（親クラス）----------------------
+  // 親クラス
+  var Tetragon = function(aWidth, aHeight){
+
+  }
+
+  // プロトタイプに計算
+  Tetragon.prototype.calc = function(aWidth, aHeight){
+    var result = aWidth * aHeight;
+    return result;
+  }
+
+  // プロトタイプに表示　#output-area に append
+  Tetragon.prototype.render = function(aSize){
+    var str = '面積' + aSize + 'の' + this.type;
+    $('#output-area').append(str);
+  }
+
+
+  // 子クラス　正方形 ----------------------
+  var Square = function(){
+    this.type = '正方形';
+  }
+  Square.prototype = new Tetragon();
+
+  // 子クラス　長方形 ----------------------
+  var Rect = function(){
+    this.type = '長方形';
+  }
+  Rect.prototype = new Tetragon();
+
+
+
+  // イベント
+  $(function(){
+    setEvent();
+  });
+
+
+  var setEvent = function(){
+
+  $('#calc-btn').on('click',function(){
+    var w = $('#w').val();
+    var h = $('#h').val();
+
+    if(w === h){
+      var sq = new Square();
+      var size = sq.calc(w,h);
+      sq.render(size);
+    } else {
+      var rc = new Rect();
+      var size = rc.calc(w,h);
+      rc.render(size);
+    }
+  });
+
+  };
+
+})();
+</script>
+
+
+
+
+
+</body>
+</html>

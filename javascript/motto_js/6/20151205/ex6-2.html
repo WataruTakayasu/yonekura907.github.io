@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>並べましょう（モジュールパターン）</h1>
+    <p id="control-area">全部で <input type="input" id="amount" size="3" value="10"> 個、1行につき <input type="input" id="column" size="3" value="4"> 個。<button id="show-btn">表示</button>　<button id="reset-btn">非表示</button></p>
+    <div id="container"></div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    
+    var Generator = (function(){
+        var _containerEl = null;
+        var _imageEl = null;
+        
+        var _createOne = function(num){
+            var misodaClone = _imageEl.clone(true);
+            misodaClone.attr('id', 'num_' + num);
+            return misodaClone;
+        };
+        
+        var _showImages = function(aFragmentEl){
+            _containerEl.append(aFragmentEl);
+        };
+        
+        return {
+            init: function(name){
+                _containerEl = $('#container');
+                _imageEl = $('<div>');
+                _imageEl.css({'display': 'inline-block'})
+                        .html('<img src="images/' + name + '.png" width="50">');
+            },
+            createImages: function(amount, column){
+                var fragment = $('<div>');
+                var oneLineEl = null;
+                
+                for(var cnt = 0; cnt < amount; cnt++){
+                    if(cnt % column === 0){
+                        // 1行ごとのdivを作成
+                        oneLineEl = $('<div>');
+                        fragment.append(oneLineEl);
+                    }
+                    oneLineEl.append(_createOne(cnt));
+                }
+                _showImages(fragment);
+            },
+            resetImages: function(){
+                _containerEl.empty();
+            }
+        }
+        
+    })();
+    
+    var Controller = (function(){
+        var _btnHandler = function(evt){
+            if(evt.target.id === 'show-btn'){
+                // misodaを表示する処理
+                var amount = parseInt($('#amount').val());
+                var column = parseInt($('#column').val());
+                Generator.createImages(amount, column);
+            }
+            else {
+                // misodaを消す処理
+                Generator.resetImages();
+            }
+        };
+        
+        return {
+            setEvent: function(evt){
+                $('#control-area').on('click', _btnHandler);
+            }
+        }
+    })();
+    
+    function App(){
+        Generator.init('zen');
+        Controller.setEvent();
+    }
+    App();
+    </script>
+</body>
+</html>

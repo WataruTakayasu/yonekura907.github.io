@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM</title>
+</head>
+<body>
+
+
+  <div id="divEl">
+    div
+  </div>
+
+  <div class="cl">
+    class 1
+  </div>
+  <div class="cl">
+    class 2
+  </div>
+  <div class="cl">
+    class 3
+  </div>
+  <section>
+    <h2>h2だよ</h2>
+  </section>
+
+<script>
+
+(function(){
+
+  document.addEventListener('DOMContentLoaded',function(){
+    console.log('読み込み完了');
+
+    var divEl = document.querySelector('#divEl');
+    console.log(divEl);
+
+    var clEl = document.querySelectorAll('.cl');
+    console.log(clEl[0].innerHTML);
+
+    var h2El = document.querySelector('section>h2');
+    console.log(h2El.innerHTML);
+
+
+
+
+  });
+
+
+})();
+</script>
+
+</body>
+</html>

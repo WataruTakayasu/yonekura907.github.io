@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ajaxの練習</title>
+</head>
+<body>
+  <div id="container">
+  </div>
+  <script>
+  (function(){
+
+    // プロトタイプの利点
+    // 1.メモリを無駄にしない
+    // 2.継承関係が作れるので、オブジェクト指向で実装しやすい
+
+    var Person = function(aName,aAge){
+      this.name = aName;
+      this.age = aAge;
+    };
+
+    Person.prototype.hello = function(){
+      console.log('こんにちは！私は'+ this.name + 'です。' + this.age + '歳です。');
+    }
+
+
+    var yonekura = new Person('よねくら',44);
+    var kikuchi = new Person('きくち', 44);
+
+    yonekura.hello();
+    kikuchi.hello();
+
+    console.log(yonekura === kikuchi); //false
+    console.log(yonekura.hello === kikuchi.hello); //true
+
+  })();
+  </script>
+</body>
+</html>

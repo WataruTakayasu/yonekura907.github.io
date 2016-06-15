@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    列：<input type="text" id="col" name="col">
+    行：<input type="text" id="row" name="row">
+    <button id="show-btn" name="button">描画</button>
+    <div id="container"></div>
+</body>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+
+var Model = (function(){
+    // private
+    // キャラの選定
+    var _chara = 'misoda';
+
+    // imgタグの生成
+    var _createImage = function(){
+         var _imgEl = '<img src="images/'+_chara+'.png" width="50">';
+
+         return _imgEl;
+    };
+
+    return {
+        // public
+        // viewへの受け渡し
+        setImage: function(){
+            var img = _createImage;
+            return img;
+        }
+    }
+})();
+
+
+
+var View = (function(){
+    // private
+    // 列の生成
+    var _createOneLine = function(num){
+        var _$charaEl = $('<div>');
+
+        for (var i = 0; i < num; i++) {
+            $(_$charaEl).append(Model.setImage());
+        }
+
+        return _$charaEl;
+    };
+
+
+    return {
+        // public
+        // 行の生成
+        createRowLine:function(col,row){
+
+            var $rowCharas = $('<div id="rowCharas">');
+
+            for (var i = 0; i < row; i++) {
+                $rowCharas.append(_createOneLine(col));
+            }
+            // #containerに追加
+            $('#container').append($rowCharas);
+
+        }
+    };
+})();
+
+
+
+var Controller = (function(){
+    // private
+    // ボタンのイベント
+    var _btnHandler = function(evt){
+        var $col = parseInt($('#col').val());
+        var $row = parseInt($('#row').val());
+        // console.log(typeof col);
+
+        if($col && $row){
+            View.createRowLine($col,$row);
+        }
+    }
+
+    return {
+        // public
+        setEvent:function(){
+            $('#show-btn').on('click',_btnHandler);
+        }
+    };
+})();
+
+;(function(){
+    Controller.setEvent();
+})();
+
+</script>
+</html>

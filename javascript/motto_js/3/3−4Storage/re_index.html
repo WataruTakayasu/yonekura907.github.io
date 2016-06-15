@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ローカルストレージ</title>
+</head>
+<body>
+  <button id="btn0">ローカルストレージに何か保存する</button>
+  <button id="btn1">ローカルストレージから値を取得</button>
+  <button id="btn2">ローカルストレージの値を更新する</button>
+  <button id="btn3">ローカルストレージから値を取得</button>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+  ;(function(){
+
+    $(function(){
+      setEvent();
+    });
+
+    var setEvent = function(){
+
+
+      var obj = {
+        name:'yonekura',
+        age:44
+      }
+
+      $('#btn0').on('click',function(evt){
+        var json = JSON.stringify(obj);
+        window.localStorage.setItem('sample1',json);
+      });
+
+      $('#btn1').on('click',function(evt){
+        var json = window.localStorage.getItem('sample1');
+        var obj = JSON.parse(json);
+        console.log(obj.name);
+      });
+
+
+      $('#btn2').on('click',function(){
+        var json = window.localStorage.getItem('sample1');
+        var obj = JSON.parse(json);
+
+        obj.name = 'akio';
+
+        var newJson = JSON.stringify(obj);
+        window.localStorage.setItem('sample1',newJson);
+
+      });
+
+
+
+    }
+
+  })();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>instagram test</title>
+<style>
+#sample {
+    width: 960px;
+    margin: 0 auto;
+}
+#sample li {
+    margin-bottom: 30px;
+    border-bottom: #ccc 1px solid;
+    padding-bottom: 20px;
+}
+#sample .instagram-image {
+    float: left;
+}
+#sample .instagram-data {
+    float: right;
+    width: 800px;
+}
+#sample .instagram-like .like-user {
+    float: left;
+    margin-right: 20px;
+    font-size: 11px;
+}
+#sample .instagram-comments {
+    clear: both;
+    padding-top: 10px;
+}
+#sample .instagram-comments .comments-user {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+#sample .instagram-comments .comments-user-icon {
+    float: left;
+    margin-right: 10px;
+}
+</style>
+</head>
+<body>
+
+  <div id="sample"></div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+
+$(function() {
+    var accessToken = '271885.bf6c9ed.a1ae8ea216d148c4b4e0e2cadbf95e2b'; //アクセストークンをここに入れる
+    var username = 'yonekura907'; // ユーザーID
+    $.ajax({
+        url: 'https://api.instagram.com/v1/users/search?q=' + username + '&access_token=' + accessToken,
+        dataType: 'jsonp',
+        success: function(data) {
+            for (var i = 0; i < data['data'].length; i++) {
+                // 近いusernameが複数出るので、一致するものを取得
+                if(data['data'][i]['username'] == username) {
+                    // console.log(data['data'][0]['id']); // 5001435
+                    console.log(data);
+                }
+            };
+        }
+    });
+});
+
+</script>
+</body>
+</html>

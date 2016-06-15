@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output-area"></div>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+
+        var data = [
+            {name: 'みそだ', age: 25, address: 'Tokyo'},
+            {name: 'ことり', age: 35, address: 'Canada'},
+            {name: 'ぜん', age: 45, address: 'India'},
+            {name: 'ぶっとぱっと', age: 55, address: 'Amerika'},
+        ];
+
+        $(function(){
+            var data = createData();
+            render(data);
+        });
+
+        var createData = function(){
+            var html = '';
+            $($.map(data, function(value, index){
+                console.log(value);
+                return value.name + 'さん(' + value.age + ')' + 'は' + value.address + '出身です';
+            }))
+            .each(function(key, value){
+                html += value + '<br>';
+            });
+            return html;
+        };
+
+        var render = function(aData){
+            $('#output-area').append(aData);
+        };
+
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prototype</title>
+</head>
+<body>
+<script>
+;(function(){
+
+
+  // プロトタイプパターン ---------------------------
+  var User = function(aName){
+    this.name = aName;
+    this.hello = function(){
+      console.log('My Name is ' + this.name);
+    }
+  }
+
+  // インスタンスの生成
+  var takeda = new User('Takeda');
+  // takeda.hello();
+
+
+
+  // プロトタイプパターン ---------------------------
+  var Human = function(aName){
+    this.name = aName;
+  };
+
+  // プロトタイプ
+  Human.prototype.hello = function(){
+    console.log('My Name is ' + this.name);
+  };
+
+  // インスタンスの生成
+  var yonekura = new Human('Yonekura');
+  yonekura.hello();
+
+  var furuya = new Human('Furuya');
+  furuya.hello();
+
+
+
+  // プロトタイプチェーン ---------------------------
+  var Car = function(){
+
+  };
+  Car.prototype.name = 'Car';
+  Car.prototype.speed = '普通だよ';
+  Car.prototype.drive = function(){
+    console.log(this.name + ':' + this.speed);
+  };
+  var superCar = new Car();
+  superCar.name = 'フェラーリ'
+  superCar.speed = '速いよ';
+  superCar.drive();
+  console.log(superCar);
+  console.log(superCar instanceof Car);
+
+
+
+  // プロトタイプ継承 -------------------------------
+  var Animal = function(){
+    this.hoge = 10;
+  };
+  // 動物クラス（親クラス）
+  Animal.prototype = {
+    name: 'nanashi',
+    age: 20,
+    bark: 'Hogeeeee',
+    cry:function(){
+      console.log(this.bark + 'と鳴いた');
+    }
+  };
+
+  // いぬクラス（子クラス）
+  var Dog = function(aAge){
+    this.age = aAge;
+  };
+  Dog.prototype = new Animal();
+  Dog.prototype.bark = 'きゃんきゃん';
+  var chiwawa = new Dog(10);
+
+  console.log(chiwawa);
+
+  console.log(chiwawa.bark);
+  chiwawa.cry();
+
+
+})();
+</script>
+</body>
+</html>

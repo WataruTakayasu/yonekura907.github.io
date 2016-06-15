@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 便利メソッド</title>
+</head>
+<body>
+    <ul>
+        <li>みそだ</li>
+        <li>ことり</li>
+        <li>ぜん</li>
+    </ul>
+    <div id="trim"> ほげ </div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        // DOMContentLoaed
+        $(function(){
+            //---------------------
+            // trim
+            //---------------------
+            var text = $('#trim').text();
+            console.log(text);
+            text = $.trim(text);
+            console.log(text);
+
+            //---------------------
+            // each
+            //---------------------
+            // 配列
+            var charactors = ['みそだ', 'ことり', 'ぜん', 'すのびっけ', 'ぶっとぱっと'];
+            $.each(charactors, function(index, value){
+                console.log(index + '番目の要素は' + value + 'です');
+            });
+            
+            // オブジェクト
+            var profile = {name: 'takeda', age: 35, address: 'Taito'};
+            window.jQuery.each(profile, function(key, value){
+                console.log(key + ' : ' + value);
+            });
+            
+            // これは一緒だよ
+            // window.jQuery = $
+            
+            // DOM要素に対してeachをしてみる
+            $('li').each(function(){
+                console.log( $(this).text() );
+            });
+            
+
+            //------------------------------
+            // map
+            //------------------------------
+            var charactors = ['みそだ', 'ことり', 'ぜん', 'すのびっけ', 'ぶっとぱっと'];
+            var result = $.map(charactors, function(value, index){
+                // console.log(value);
+                // console.log(index);
+                return value + 'さん'
+            });
+            console.log(result);
+            
+            // オブジェクトの配列から特定のプロパティの配列を作る
+            var charactors = [{name: 'takeda', age: 35}, {name: 'furaya', age: 30}];
+            var result = $.map(charactors, function(value, index){
+                return value.name;
+            });
+            console.log(result);
+            
+            //----------------------------
+            // filter
+            //----------------------------
+            // var numbers = [10, 20, 5, 1, 12, 15];
+            // var result = $.map(numbers, function(value, index){
+            //     return value < 10;
+            // });
+            // console.log(result);
+            
+            $('li').filter(function(index, value){
+                return index === 1;
+            }).css({background: 'red'});
+
+            $('li').filter(':even').css({background: 'blue'});
+
+            
+            //-----------------------------
+            // extend
+            //-----------------------------
+            var user1 = {name: 'takeda', age: 35, address: 'Taito'};
+            var user2 = {blood: 'AB'};
+            var hoge = $.extend(user1, user2);
+            console.log(hoge);
+
+            var school = {
+                mottojs: {
+                    teacher: 'Takeda',
+                    students: ['Tsubasa', 'Yonekura']
+                }
+            };
+
+            var schoolCpy = {
+                mottojs: {
+                    sub: 'ougi'
+                }
+            };
+            
+            var hoge = $.extend(schoolCpy, school);
+            console.log(hoge);
+
+            var hoge = $.extend(true, schoolCpy, school);
+            console.log(hoge);
+
+            //---------------------------------------
+            // unique
+            //---------------------------------------
+            var numbers = [1,2,3,4,5,4,3,2,1];
+            var data = $.unique(numbers);
+            console.log(data);
+
+            //----------------------------------------
+            // merge
+            //----------------------------------------
+            var data1 = [1,2,3];
+            var data2 = [3,4,5];
+            var newData = $.merge(data1, data2);
+            console.log(data);
+
+
+        });
+    })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+

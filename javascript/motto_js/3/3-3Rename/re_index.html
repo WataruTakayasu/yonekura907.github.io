@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>3-3 thisについて</title>
+</head>
+<body>
+<button id="btn">ボタン</button>
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+;(function(){
+
+  $(function(){
+    console.log(this); // Documentオブジェクト
+
+    $('#btn').on('click',function(){
+      console.log(this);
+
+      $(this).off('click');
+
+      var self = this;
+
+      setTimeout(function(){
+        console.log(this);
+        console.log(self);
+        $(self).off('click');
+      }, 1000);
+
+    });
+
+
+
+  });
+
+})();
+
+// console.log(this); //windowオブジェクト
+</script>
+</body>
+</html>

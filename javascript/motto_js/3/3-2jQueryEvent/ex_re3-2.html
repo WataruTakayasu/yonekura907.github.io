@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Event jQuery</title>
+<style>
+body{
+  position: relative;
+}
+#misoda{
+  position: absolute;
+  top: 50px;
+}
+</style>
+</head>
+<body>
+
+<button id="misoda-btn">misoda</button>
+
+<div id="misoda">
+  <img src="images/misoda.png" alt="">
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+(function(){
+  $(function(){
+    setEvent();
+  });
+
+  var setEvent = function(){
+    $('#misoda-btn').on('click',function(evt){
+      console.log('btn click');
+      $(this).off('click');
+      startAnimation();
+    });
+
+  }
+
+  var startAnimation = function(){
+    $('#misoda').animate({'left':'300px'},1500)
+                .animate({'left':'0px'},1500,function(){
+                  console.log('end animation');
+                  setEvent();
+      });
+  }
+
+
+})();
+</script>
+
+</body>
+</html>

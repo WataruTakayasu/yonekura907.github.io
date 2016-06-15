@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    // モジュールパターン
+    // デザインパターンの１つ
+    // クロージャを使用して、「プライベート」な状態と構成をカプセル化
+    
+    var testModule = (function(){
+        // プライベートなメソッド
+        var name = 'T.Takeda';
+        
+        // プライベートなメソッド
+        var show2 = function(){
+            console.log('古谷');
+        };
+        
+        var obj = {
+            // showメソッドはPublicなメソッド
+            show: function(aName){
+                console.log(aName);
+            },
+            
+            age: 0,
+            
+            showAge: function(){
+                console.log(name + 'は' + this.age + '歳です');
+            }
+        };
+        
+        return obj;
+        
+    })();
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM操作</title>
+</head>
+<body>
+
+  <button id="addAfter">末尾に追加</button>
+  <button id="addBefore">先頭に追加</button>
+  <button id="removeAfter">末尾から削除</button>
+  <button id="removeBefore">先頭から削除</button>
+
+  <ul id="ulEl">
+  </ul>
+
+  <script>
+  ;(function(){
+
+    var colors = ['red','blue','yellow','orange'];
+    var colorCount = 0;
+    var count = 0;
+    var d = document;
+    var ulEl;
+
+
+    // DOMの読み込み完了のイベント
+    d.addEventListener('DOMContentLoaded', function(){
+      //DOMの取得
+      ulEl = d.querySelector('#ulEl');
+
+      setEvent();
+
+    });
+
+    // イベントの設定
+    var setEvent = function(){
+      d.querySelector('#addAfter').addEventListener('click',addAfterList,false);
+    }
+
+    // 末尾に追加
+    var addAfterList = function(){
+      var targetEl = createList();
+      ulEl.appendChild(targetEl);
+
+    }
+
+    // liの生成
+    var createList = function(){
+      // カウンターを加算
+      count++;
+
+      var liEl = d.createElement('li');
+      var text = d.createTextNode(count + '個目の行');
+      liEl.appendChild(text);
+
+      liEl.style.backgroundColor = colors[getColor()];
+
+      return liEl;
+    }
+
+
+    // 色のカウンター
+    var getColor = function(){
+      if(colorCount === colors.length-1){
+        colorCount = 0;
+      } else {
+        colorCount++;
+      }
+      return colorCount;
+    }
+
+  })();
+  </script>
+
+</body>
+</html>

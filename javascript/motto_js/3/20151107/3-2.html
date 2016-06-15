@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <button id="add-btn" name="button">追加</button>
+    <button id="onetime-btn" name="button">1回しか押せないボタン</button>
+    
+    <div id="output-area">
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        var oneTimeBtn = null;
+        
+        // DOMの読み込みが完了したらsetEventを実行する
+        document.addEventListener('DOMContentLoaded', function(){
+            setEvent();
+        }, false);
+        
+        var setEvent = function(){
+            var cnt = 0;
+            var outputElm = document.querySelector('#output-area')
+            
+            // 追加ボタンにclickイベントを付与
+            var btnElm = document.querySelector('#add-btn');
+            btnElm.addEventListener('click', function(evt){
+                cnt++;
+                // 追加する要素（エレメントの生成）
+                var divElm = document.createElement('div');
+                divElm.setAttribute('id', 'add-' + cnt);
+                divElm.innerHTML = cnt + '. ここをクリックしてね!' + '<br>';
+                // 追加する要素にイベントを設定
+                divElm.addEventListener('click', function(evt){
+                    // JavaScriptオブジェクトを使用した方法
+                    console.log(evt.target.innerHTML);
+                }, false);
+                
+                // div要素の追加
+                outputElm.appendChild(divElm);
+            }, false);
+            
+            
+            // 一回しか押せないボタンのイベント設定
+            var self = this;
+            oneTimeBtn = document.querySelector('#onetime-btn');
+            oneTimeBtn.addEventListener('click', showAlert, false);
+        };
+        
+        var showAlert = function(){
+            alert();
+            // 一回しか押せないボタンのイベントを削除
+            oneTimeBtn.removeEventListener('click', showAlert, false);
+        };
+        
+    })();
+    </script>
+    
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ajaxの練習</title>
+</head>
+<body>
+  <div id="container">
+  </div>
+  <script>
+  (function(){
+
+    var Animal = function(aType, aMsg){
+      this.type = aType;
+      this.msg = aMsg;
+      this.cry = function(){
+        console.log('私は' + this.type + 'です。' + this.msg);
+      }
+    };
+
+    var dog = new Animal('いぬ','わんわん');
+    var cat = new Animal('ねこ', 'にゅあにゃあ');
+
+    dog.cry();
+    cat.cry();
+    console.log(dog === cat);
+    console.log(dog.cry === cat.cry);
+
+  })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>jQuery UI Dragg</title>
+<style>
+#div1{
+  width: 100px;
+  height: 100px;
+  background-color: #F00;
+  color:#FFF;
+}
+</style>
+</head>
+<body>
+
+<div id="div1">
+  DIVだよー
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+<script>
+;(function(){
+
+  // DOMContentLoaded
+  $(function(){
+
+    $("#div1").draggable();
+
+  });
+
+})();
+</script>
+</body>
+</html>

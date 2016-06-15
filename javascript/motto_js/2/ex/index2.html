@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM操作</title>
+</head>
+<body>
+
+  <button id="addHead">先頭に追加</button>
+  <button id="addFoot">末尾に追加</button>
+  <button id="removeHead">先頭から削除</button>
+  <button id="removeFoot">末尾から削除</button>
+
+  <ul id="list">
+    <li>1行目</li>
+    <li>2行目</li>
+    <li>3行目</li>
+  </ul>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+  $(function(){
+
+    var colors = ['red','blue','yellow','orange'];
+    var ulEl = $('#list');
+    var count = 3;
+    var colorCount = 0;
+
+    $('#addHead').on('click',function(){
+
+      count++;
+      console.log('count: '+count);
+      ulEl.prepend('<li>'+count+'行目</li>');
+      // console.log('addHead');
+      // console.log(ulEl.children()[0]);
+      setColor(ulEl.children()[0]);
+
+
+    });
+    $('#addFoot').on('click',function(){
+      count++;
+      console.log('addFoot');
+      console.log('count: '+count);
+      ulEl.append('<li>'+count+'行目</li>');
+
+      setColor(ulEl.children()[count-1]);
+    });
+    $('#removeHead').on('click',function(){
+      count--;
+      console.log('removeHead');
+      console.log(ulEl.children()[0]);
+      console.log('count: '+count);
+      ulEl.children()[0].remove();
+
+
+    });
+    $('#removeFoot').on('click',function(){
+      count--;
+      console.log('removeFoot');
+      console.log(ulEl.children().length-1);
+      ulEl.children()[ulEl.children().length-1].remove();
+      console.log('count: '+count);
+    });
+
+
+    var setColor = function(aEl){
+      console.log(aEl);
+      //
+      // console.log(colorCount);
+      $(aEl).css("background-color",colors[colorCount]);
+      if(colorCount >= 3){
+        colorCount = -1;
+      }
+      colorCount++;
+    }
+
+  });
+  // ;(function(){
+  //
+  //   // DOMの読み込み完了のイベント
+  //   document.addEventListener('DOMContentLoaded', function(){
+  //
+  //
+  //
+  //   });
+  // })();
+  </script>
+
+</body>
+</html>

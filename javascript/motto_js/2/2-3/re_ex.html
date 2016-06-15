@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>closure</title>
+</head>
+<body>
+
+<button id="btn">ON</button>
+
+
+<script>
+;(function(){
+
+
+  var d = document;
+
+
+  d.addEventListener('DOMContentLoaded',function(){
+
+    var doChg = chgBtn();
+
+    // DOMの取得
+    var btnEl = d.querySelector('#btn');
+
+    // ボタンのイベント
+    btnEl.addEventListener('click',function(evt){
+      doChg();
+    },false);
+
+    window.btnEl = btnEl;
+
+  });
+
+
+
+  var chgBtn = function(){
+
+    // フラグ
+    var isBtn = true;
+
+    return function(){
+
+      var btnEl = window.btnEl;
+      // console.log(btnEl);
+      console.log(window);
+
+      if(isBtn){
+        btnEl.innerHTML = 'OFF';
+      } else{
+        btnEl.innerHTML = 'ON';
+      }
+
+      isBtn = !isBtn;
+
+    }
+  }
+
+
+
+
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ローカルストレージ</title>
+<style>
+
+.font-small{
+  font-size: 12px;
+}
+.font-medium{
+  font-size: 18px;
+}
+.font-large{
+  font-size: 36px;
+}
+</style>
+</head>
+<body>
+  <button id="btnL">大</button>
+  <button id="btnM">中</button>
+  <button id="btnS">小</button>
+
+  <div id="msg" class="font-medium">こんにちは</div>
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script>
+  ;(function(){
+
+    $(function(){
+      // ストレージに保存しているデータの取得
+      loadFontSize();
+      // イベントの設定
+      setEvent();
+    });
+
+    // イベント
+    var setEvent = function(){
+
+      $('#btnS').on('click',function(){
+        // $('#msg').removeClass().addClass('font-small');
+        saveFontSize('small');
+
+        // var loadJson = window.localStorage.getItem('fsize');
+        // var obj = JSON.parse(loadJson);
+        // obj.size = 'small';
+        // window.localStorage.setItem('fsize',JSON.stringify(obj));
+
+      });
+
+      $('#btnM').on('click',function(){
+        // $('#msg').removeClass().addClass('font-medium');
+        saveFontSize('medium');
+        // var loadJson = window.localStorage.getItem('fsize');
+        // var obj = JSON.parse(loadJson);
+        // obj.size = 'medium';
+        // window.localStorage.setItem('fsize',JSON.stringify(obj));
+      });
+
+      $('#btnL').on('click',function(){
+
+        // $('#msg').removeClass().addClass('font-large');
+
+        saveFontSize('large');
+
+        // var loadJson = window.localStorage.getItem('fsize');
+        // var obj = JSON.parse(loadJson);
+        // obj.size = 'large';
+        // window.localStorage.setItem('fsize',JSON.stringify(obj));
+      });
+
+    };
+
+    // フォントサイズの保存
+    var saveFontSize = function(size){
+      chgFontSize(size);
+      var loadJson = window.localStorage.getItem('fsize');
+      var obj = JSON.parse(loadJson);
+      obj.size = size;
+      window.localStorage.setItem('fsize',JSON.stringify(obj));
+    };
+
+
+    // フォントサイズの読み込み
+    var loadFontSize = function(){
+
+      var json = window.localStorage.getItem('fsize');
+
+      if(json == null){
+
+        var fontSize = {
+          size: 'medium'
+        }
+
+        var setJson = JSON.stringify(fontSize);
+        window.localStorage.setItem('fsize',setJson);
+      } else {
+        var obj = JSON.parse(json);
+        var fontSize = obj.size;
+        chgFontSize(fontSize);
+      }
+
+    }
+
+    // フォントサイズの変更
+    var chgFontSize = function(size){
+      $('#msg').removeClass().addClass('font-' + size);
+    }
+
+
+
+
+  })();
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>モジュールパターン</title>
+</head>
+<body>
+<script>
+// モジュールパターン
+// デザインパターンのひとつ
+// クロージャを使用して、「プライベート」な状態と構成をカプセル化
+
+var testModule = (function(){
+
+  // private
+  var name = 'yonekura';
+
+  var showF = function(){
+    console.log('Furuya');
+  }
+
+  // this.showF();
+
+
+  return {
+
+    // public
+    // オブジェクト式で書く
+    showName:function(){
+      console.log(name + 'public');
+    },
+    age:0,
+    showAge:function(){
+      console.log(this.age + 'public');
+    }
+
+  }
+})();
+;(function () {
+
+  testModule.showName();
+  testModule.age = 10;
+  testModule.showAge();
+
+})();
+</script>
+</body>
+</html>

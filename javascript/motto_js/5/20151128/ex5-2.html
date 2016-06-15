@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>ex5-2</title>
+    <style type="text/css">
+    #body {
+        position: relative;
+    }
+    #misoda {
+        top: 50px;
+        position: absolute;
+        width: 124px;
+    }
+    .misoda-color {
+        background-color: red;
+    }
+    #kotori {
+        position: absolute;
+        width: 141px;
+        top: 300px;
+    }
+    .kotori-color {
+        background-color: blue;
+    }
+
+    </style>
+</head>
+<body>
+    <button id="btn">移動開始！</button><br>
+
+    <div id="misoda">
+        <img src="images/misoda.png" >
+    </div>
+    <div id="kotori">
+        <img src="images/kotori.png" >
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript">
+    ;(function(){
+        
+        $(function(){
+            setEvent();
+        });
+        
+        var setEvent = function(){
+            $('#btn').on('click', function(evt){
+                // クリックイベントをoff
+                $(this).off('click');
+                // アニメーション
+                start();
+            });
+        };
+        
+        var dfd = null;
+        var promiseFunc = function(){
+            dfd = $.Deferred();
+            $('#misoda').animate({'left': '500px'}, function(){
+                dfd.resolve();
+            })
+            return dfd.promise();
+        };
+
+        var start = function(){
+            promiseFunc()
+            .then(function(){
+                return $('#kotori').animate({'top': '50px'});
+            })
+            .then(function(){
+                return $('#misoda').animate({'top': '300px'});
+            })
+            .then(function(){
+                return $('#kotori').animate({'left': '500px'});
+            })
+            .then(function(){
+                // 背景色を変える
+                $('#kotori').addClass('kotori-color');
+                $('#misoda').addClass('misoda-color');
+            })
+            .then(function(){
+                // wait処理
+                return $.Deferred(function(dfd) {
+                    setTimeout(function() {
+                        dfd.resolve();
+                    }, 2000);
+                });
+            })
+            .then(function(){
+                return $('#misoda').animate({'left': '0px'});
+            })
+            .then(function(){
+                return $('#kotori').animate({'top': '300px'});
+            })
+            .then(function(){
+                return $('#misoda').animate({'top': '50px'});
+            })
+            .then(function(){
+                return $('#kotori').animate({'left': '0px'});
+            })
+            .then(function(){
+                // 背景色を消す
+                $('#kotori').removeClass('kotori-color');
+                $('#misoda').removeClass('misoda-color');
+                // イベントの再設定
+                setEvent();
+            });
+        };
+    })();
+    </script>
+
+</body>
+</html>

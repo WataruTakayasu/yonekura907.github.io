@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>OOP 演習</title>
+</head>
+<body>
+    <button id="cat-btn">ねこ</button>
+    <button id="dog-btn">いぬ</button>
+    <button id="cat-plus-btn">ねこの挨拶</button>
+
+    <div id="output-area"></div>
+    <script type="text/javascript">
+    ;(function(){
+
+        // アニマルオブジェクトを作成（コンストラクタ関数）
+        var Animal = function(aType, aMsg){
+            this.type = aType;
+            this.msg = aMsg;
+            this.cry = function(){
+                console.log('私は' + this.type + 'です。 ' + aMsg);
+            }
+        }
+
+        // コンストラクタ関数に引数を渡してインスタンスを作成
+        var dog = new Animal('いぬ', 'わんわんわん');
+        var cat = new Animal('ねこ', 'にゃーにゃーにゃー');
+
+        // catインスタンスにプロパティを追加
+        cat.age = 33;
+        // catインスタンスにメソッドを追加
+        cat.greeting = function(){
+            console.log('私は' + this.age +'歳の' + this.type + 'です。 ');
+        };
+
+        document.getElementById('cat-btn').addEventListener('click', function(evt){
+            cat.cry();
+        }, false);
+
+        document.getElementById('dog-btn').addEventListener('click', function(evt){
+            dog.cry();
+        }, false);
+
+        document.getElementById('cat-plus-btn').addEventListener('click', function(evt){
+            cat.greeting();
+        }, false);
+
+
+    })();
+    </script>
+</body>
+</html>

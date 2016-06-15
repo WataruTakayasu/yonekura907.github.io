@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Ajax演習</title>
+</head>
+<body>
+<input type="text" id="input-name" name='input-name'>
+<button id="send-btn" name="button">ajaxで送信</button>
+
+<div id="output-area"></div>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+;(function(){
+
+  $(function(){
+    $('#send-btn').on('click', function(){
+
+      var val = $('#input-name').val();
+      // console.log(inputText);
+
+      if(val){
+        send(val);
+        $('#output-area').empty();
+      }
+
+    });
+  });
+
+
+  // ajax
+  var send = function(txt){
+    $.ajax({
+      url: 'http://cshool.com:8888/ex',
+      type: 'GET',
+      dataType: 'json',
+      data: {
+        name: txt
+      }
+    })
+    .done(function(data){
+      console.log(data.character);
+      console.log('成功');
+      // console.log(data.character[0].name);
+      createData(data)
+    })
+    .fail(function(){
+      console.log('失敗');
+    });
+  };
+
+
+  var createData = function(aData){
+
+    var list = $.map(aData.character, function(value,index){
+      // console.log(value.name);
+      render(value.name, value.img, value.comment);
+    });
+  };
+
+
+  var render = function(aName, aImg, aComment){
+    var html = '';
+    console.log(aName,aImg,aComment);
+    html = '<img src="'+ aImg +'" alt="'+ aName +'"><br>'+ aComment + '<br>';
+    $('#output-area').append(html);
+  }
+
+})();
+</script>
+</body>
+</html>

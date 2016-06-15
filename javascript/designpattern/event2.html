@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>javascript - event2</title>
+    <style>
+    #box{
+      width:100px;
+      height:100px;
+      background-color:#FF0000;
+      border-radius:50px;
+    }
+    </style>
+</head>
+<body>
+
+<div id="box"></div>
+<input type="text" id="color-input">
+<button id="btn">クリック</button>
+
+
+<script>
+var btn = document.querySelector('#btn');
+
+//ボタンをクリックしたら
+btn.addEventListener('click',getColorCode);
+
+
+//関数の定義
+function getColorCode(){
+
+  var code = document.querySelector('#color-input').value;
+  code = '#' + code;
+  console.log(code);
+
+  setColorCode(code);
+}
+
+//関数の定義
+function setColorCode(aCode){
+  document.querySelector('#box').style.backgroundColor = aCode;
+}
+
+</script>
+</body>
+</html>

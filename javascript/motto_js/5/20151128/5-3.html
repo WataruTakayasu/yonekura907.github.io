@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>コンストラクタ関数</title>
+</head>
+<body>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        // コンストラクタ関数
+        // => オブジェクトを生成し、初期化をする関数
+        var Animal = function(aType, aMsg){
+            this.type = aType;
+            this.msg = aMsg;
+            this.cry = function(){
+                console.log('私は' + this.type + 'です ' + aMsg );
+            };
+        };
+
+        // コンストラクタ関数に引数を渡して、オブジェクト（インスタンス）を作成する
+        var dog = new Animal('犬', 'わんわんわん！');
+        console.log(dog);
+        dog.cry();
+
+        var cat = new Animal('ねこ', 'にゃーにゃー');
+        cat.cry();
+
+        cat.age = 33;
+        cat.greeting = function(){
+            console.log('私は' + this.age + '歳の' + this.type + 'です');
+        };
+        console.log(cat);
+        cat.greeting();
+
+        console.log(dog);
+
+        console.log(dog.cry === cat.cry);   // false
+
+
+    })();
+
+    </script>
+</body>
+</html>

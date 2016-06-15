@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>closure</title>
+</head>
+<body>
+
+<button id="btn">ON</button>
+
+
+<script>
+;(function(){
+
+  // var count = 0;
+  //
+  // document.querySelector('#btn').addEventListener('click',function(evt){
+  //
+  //   if(count == 0){
+  //     count ++;
+  //     evt.srcElement.innerHTML = 'OFF';
+  //   } else {
+  //     count = 0;
+  //     evt.srcElement.innerHTML = 'ON';
+  //   }
+  //   console.log(count);
+  //
+  // }, false);
+
+  var getCounter = function(aEvt){
+
+    var counter = 0;
+    console.log(aEvt);
+
+    return function(){
+
+      if(counter == 0){
+        counter ++;
+      } else {
+        counter = 0;
+      }
+      console.log('現在のカウントは'　+ counter + 'です');
+
+    };
+  }
+
+  var counter1 = getCounter();
+
+  document.querySelector('#btn').addEventListener('click',function(evt){
+    counter1(evt);
+  }, false);
+
+
+})();
+</script>
+</body>
+</html>

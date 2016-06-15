@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Deferred</title>
+</head>
+<body>
+  <button id="btn" name="button">成功</button>
+  <button id="btn2" name="button">失敗</button>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+  ;(function(){
+
+    $(function(){
+      $('#btn').on('click',function(){
+        var promise = doSomething();
+        promise.done(function() {
+          alert('成功しました');
+        });
+      });
+
+      $('#btn2').on('click',function () {
+        var promise = doSomething2();
+        promise.done(function () {
+          alert('成功');
+        });
+
+        promise.fail(function () {
+          alert('失敗');
+        });
+      })
+    });
+
+    var doSomething = function(){
+      var defer = $.Deferred();
+
+      setTimeout(function () {
+        defer.resolve(); //解決
+      },2000);
+      return defer.promise(); //プロミスを作って返す
+    }
+
+    var doSomething2 = function(){
+      var defer = $.Deferred();
+      setTimeout(function () {
+        defer.reject(); //却下
+      },2000);
+      return defer.promise();
+    }
+
+  })();
+  </script>
+</body>
+</html>

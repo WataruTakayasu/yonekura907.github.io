@@ -1,0 +1,10 @@
+.completed{
+    color:#CCC;
+}
+#todo-list li .edit{
+    display: none;
+}
+
+ul {
+    list-style: none;
+}

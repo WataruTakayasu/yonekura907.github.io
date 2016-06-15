@@ -1,0 +1,12 @@
+#container{
+  position: relative;
+  width: 800px;
+  height: 600px;
+  background-color: #EEEEEE;
+  overflow: hidden;
+}
+#dino{
+  position: absolute;
+  left: 100px;
+  top:100px;
+}

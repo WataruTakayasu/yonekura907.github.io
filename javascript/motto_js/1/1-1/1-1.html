@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>データ型</title>
+</head>
+<body>
+<script>
+
+// データ型
+// 数値(Number) / 文字列(String) / 真偽値(Boolean)
+// オブジェクト(Object) / 配列(Array)
+// Null / 未定義(Undefined)
+
+// 変数の型を調べる
+var variable = 'takeda';
+console.log(typeof variable);
+
+var num = 12;
+console.log(typeof num);
+
+var bool = true;
+console.log(typeof bool);
+
+var obj = {name:'takeda', age:'35', address: 'taito-ku'}; // nameはプロパティと呼ぶ
+console.log(typeof obj);
+
+var array = ['りんご','ごりら','らっぱ'];
+console.log(typeof array);
+
+var apple = 'りんご';
+var gorilla = 'ごりら';
+var rappa = 'らっぱ';
+var array2 = [apple, gorilla, rappa];
+
+var list = [
+  {name: 'takeda', age: 35, address: 'taito-ku'},
+  {name: 'furuya', age: 30, address: 'suginami-ku'},
+  {hoge: [1,2,3,4,5]}
+];
+
+var list2 = [
+  {hoge: [1,2,3,4,5]},
+  {hoge: [6,7,8,9,10]}
+]
+
+console.log(list[0].age);
+console.log(list2[1].hoge[0]);
+
+var obj2 = {};
+obj2.name = '';
+obj2.name = 'takeda';
+console.log(obj2.name);
+
+
+
+// 制御構文
+// if文
+//等価演算子
+if( 1 == '1'){
+  // alert('==');
+}
+
+// 厳密な等価演算子
+if(1 === '1'){
+  alert('===');
+}
+// !== 等価演算子の否定
+
+
+// 偽: null, undefined, false, 0
+// 真: 偽以外
+
+// 否定演算子
+// !: 真の値を偽に変える。儀の値を真に変える。
+
+var xxx = false;
+if(!xxx){
+  // alert('error');
+}
+
+
+// for文
+var teachers = ['たけだ', 'おうぎ', 'ふるや'];
+// 配列のlengthを保存しておく
+
+var cnt = 0;
+var len = 0;
+for (cnt = 0, len = teachers.length; cnt < len; cnt++) {
+  console.log(teachers[cnt]);
+}
+
+// for-in文 順番が保証されない
+var teachers =  {
+  main: 'たけだ',
+  sub: 'おうぎ',
+  student: 'かんの'
+}
+for (var prop in teachers){
+  console.log(prop+':'+teachers[prop]);
+}
+
+console.log('main' in teachers);
+console.log('main2' in teachers)
+
+// オブジェクトにmainがあった時に走らせる
+if('main' in teachers){
+
+}
+
+
+
+
+</script>
+</body>
+</html>

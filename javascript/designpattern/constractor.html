@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>javascriptの練習</title>
+</head>
+<body>
+  <div id="container">
+
+  </div>
+
+  <script>
+
+  // コンストラクタ
+  function Rectangle(w,h){
+    this.width = w;
+    this.height = h;
+    this.area = function(){
+      return this.width*this.height;
+    }
+  }
+
+  var r = new Rectangle(2,4);
+  var a = r.area();
+  console.log(r);
+
+  </script>
+</body>
+</html>

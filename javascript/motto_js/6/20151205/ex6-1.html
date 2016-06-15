@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        幅 : <input id="width" type="text">
+        高さ : <input id="height" type="text">
+        <button id="calc-btn" name="button">計算</button>
+    </div>
+    
+    <div id="output-area"></div>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        
+        // 四角形クラス（親クラス）
+        function Tetragon(aWidth, aHeight){
+            this.width = aWidth;
+            this.height = aHeight;
+        };
+        
+        Tetragon.prototype.calc = function(){
+            return this.width * this.height;
+        };
+        
+        Tetragon.prototype.render = function(aSize){
+            var str = '面積' + aSize + 'の' + this.type + 'です。<br>';
+            $('#output-area').append(str);
+        };
+        
+        // 正方形クラス（子クラス）
+        function Square(aWidth, aHeight){
+            // 親クラスのコンストラクタをコール
+            Tetragon.apply(this, [aWidth, aHeight]);
+            this.type = '正方形';
+        }
+        // 継承
+        Square.prototype = new Tetragon();
+        
+        // 長方形（子クラス）
+        function RectAngle(aWidth, aHeight){
+            // 親クラスのコンストラクタを実行
+            Tetragon.apply(this, [aWidth, aHeight]);
+            this.type = '長方形';
+        }
+        // 継承
+        RectAngle.prototype = new Tetragon();
+        
+        $('#calc-btn').on('click', function(){
+            var width = $('#width').val();
+            var height = $('#height').val();
+            
+            if(width === height){
+                // 正方形の場合
+                var square = new Square(width, height);
+                var area = square.calc();
+                square.render(area);
+            }
+            else {
+                // 長方形の場合
+                var rectAngle = new RectAngle(width, height);
+                var area = rectAngle.calc();
+                rectAngle.render(area);
+            }
+
+        });
+    })();
+    </script>
+</body>
+</html>

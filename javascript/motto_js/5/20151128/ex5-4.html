@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <title>protypeチェーン演習</title>
+</head>
+<body>
+    <div id="control-area">
+        高さ : <input type="text" id="width">
+        幅 : <input type="text" id="height">
+        <button>計算</button>
+    </div>
+    <div id="output-area"></div>
+
+    <script type="text/javascript">
+    ;(function(){
+
+        // 四角形のクラス（親）
+        function Tetragon(aW, aH){
+            this.width = aW;
+            this.height = aH;
+        }
+
+        Tetragon.prototype.getArea = function(){
+            return this.width * this.height;
+        };
+
+        Tetragon.prototype.render = function(aSize){
+            document.getElementById('output-area').innerHTML += '面積 : ' + aSize +
+                                                                'の' + this.type +'です。<br>'
+        };
+
+        // 正方形のクラス（子）
+        function Square(aW, aH){
+            // 親クラスのコンストラクタをコール
+            Tetragon.apply(this, [aW, aH]);
+            this.type = '正方形';
+        }
+        // 継承
+        Square.prototype = new Tetragon();
+        
+        
+        // 長方形のクラス（子）
+        function RectAngle(aW, aH) {
+            // 親クラスのコンストラクタをコール
+            Tetragon.apply(this, [aW, aH]);
+            this.type = '長方形';
+        }
+        // 継承
+        RectAngle.prototype = new Tetragon();
+
+
+        var calcBtnHandler = function(){
+            var width = document.getElementById('width').value;
+            var height = document.getElementById('height').value;
+
+            if(width === height){
+                var square = new Square(width, height);
+                var area = Tetragon.prototype.getArea.call(square);
+                Tetragon.prototype.render.call(square, area);
+            }
+            else {
+                var rectAngle = new RectAngle(width, height);
+                var area = Tetragon.prototype.getArea.call(rectAngle);
+                Tetragon.prototype.render.call(rectAngle, area);
+            }
+        };
+
+        document.getElementsByTagName('button')[0].addEventListener('click', calcBtnHandler, false);
+
+    })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    
+    <img id="misoda" src="images/misoda.png"/><br>
+    <img id="kotori" src="images/kotori.png"/>
+    
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script>
+    ;(function(){
+        // $.Deferred : 「基本的にコールバック関数を実行するための仕組み」
+        var dfd = $.Deferred();
+        dfd
+        .done(function(){
+            console.log('成功');
+        })
+        .fail(function(){
+            console.log('失敗');
+        });
+        
+        // 成功を実行する
+        // dfd.resolve();
+        // 失敗を実行する
+        // dfd.reject();
+        
+        var dfd = $.Deferred(function(dfd){
+            setTimeout(function(){
+                dfd.resolve('こんにちは！');
+            }, 2000);
+        });
+        
+        dfd
+        .done(function(result){
+            console.log(result);
+        });
+        
+        // 画像のアニメーション
+        $('#misoda').animate({'marginLeft': '500px'}, function(){
+            $('#kotori').animate({'marginLeft': '500px'}, function(){
+                $('#misoda').animate({'marginLeft': '0px'}, function(){
+                    alert();
+                });
+            });
+        });
+        
+        // Deferredオブジェクトを使用して書き換える
+        var animeFunc = function(){
+            var dfd = $.Deferred();
+            $('#misoda').animate({'marginLeft': '500px'}, function(){
+                dfd.resolve();
+            });
+            return dfd.promise();
+        };
+        
+        animeFunc()
+        .then(function(){
+            return $('#kotori').animate({'marginLeft': '500px'});
+        })
+        .then(function(){
+            return $('#misoda').animate({'marginLeft': '0px'});
+        })
+        .then(function(){
+            return $('#kotori').animate({'marginLeft': '0px'});
+        })
+        .then(function(){
+            alert();
+        })
+        
+        
+        
+        
+    })();
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
