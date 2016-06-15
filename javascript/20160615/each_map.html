@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>jQuery 便利メソッド</title>
+
+</head>
+<body>
+
+  <div id="output">
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script>
+
+  // DOMContentLoaded
+  $(function(){
+
+    var obj = [
+      {name: 'yonekura', age: '44', address :'kawasaki'},
+      {name: 'urano', age: '22', address :'hachiouji'},
+      {name: 'kikuchi', age: '44', address :'hachiouji'}
+    ];
+
+
+    var result = $.map(obj, function(value, index){
+
+      if(value.address == 'hachiouji'){
+        var output = value
+      }
+      //
+      // var output = value.name + 'さんは' + value.age + '歳です。' + value.msg + '<br>';
+      //
+      // console.log(value.name);
+      // console.log(value.age);
+      // console.log(value.msg);
+
+      return output;
+    });
+
+
+
+    // $('#output').append(result);
+
+    console.log(result);
+
+
+  });
+
+
+  </script>
+</body>
+</html>
