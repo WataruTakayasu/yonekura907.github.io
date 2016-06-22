@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>map</title>
+</head>
+<body>
+
+<button id="check-btn">チェック</button>
+<input type="checkbox" name="hobby" id="sports" value="1">
+<label for="sports">スポーツ</label>
+<input type="checkbox" name="hobby" id="reading" value="2">
+<label for="reading">読書</label>
+<input type="checkbox" name="hobby" id="travel" value="3">
+<label for="travel">旅行</label>
+
+
+<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script>
+
+  // DOMContentLoaded
+  $(function(){
+
+    // ------------------
+    // map
+    // ------------------
+
+    // var charactors = ['みそだ', 'ことり', 'ぜん', 'すのびっけ', 'ぶっとぱっと'];
+    // var result = $.map(charactors, function(value, index){
+    //   console.log(value);
+    //   console.log(index);
+    //
+    //   return value + 'さん';
+    // });
+    //
+    // console.log(result);
+
+    // オブジェクトの配列から特定のプロパティの配列をつくる
+    var charactors =[{name: 'takeda', age: 35},{name: 'furuya', age: 30}];
+
+    var result = $.map(charactors, function(value, index){
+      return value.name;
+    });
+
+    console.log(result);
+
+
+
+
+    // チェックした項目のidを取得する
+    $('#check-btn').on('click',function(){
+
+      var checked = $('input[name=hobby]:checked').map(function(index, value){
+        return value;
+      });
+      console.log(checked);
+
+      for (var cnt = 0; cnt < checked.length; cnt++) {
+        console.log(checked[cnt].id);
+      }
+
+    });
+
+  });
+</script>
+</body>
+</html>
