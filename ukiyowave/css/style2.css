@@ -1,0 +1,42 @@
+svg{
+  width: 800px;
+  height: 600px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -310px;
+  /*display: none;*/
+}
+
+#ttl{
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-size: 100px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin-bottom: 50px;
+  color: #FFFFFF;
+  /*display: none;*/
+}
+
+/*#tttt{
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-size: 50px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom:0;
+  margin-bottom: 350px;
+  color: #FFFFFF;
+
+}*/
+
+#container{
+	background-color:#b0b0b0;
+
+background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZlcnNpb249JzEuMScgd2lkdGg9JzMwMCcgaGVpZ2h0PSczMDAnPgoJPGRlZnM+CgkJPGZpbHRlciBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9J3NSR0InIGlkPSdmaWx0ZXIzMDAxJz4KCQkJPGZlVHVyYnVsZW5jZSB0eXBlPSdmcmFjdGFsTm9pc2UnIGJhc2VGcmVxdWVuY3k9JzEwMCAuODUnIG51bU9jdGF2ZXM9JzEnLz4KCQk8L2ZpbHRlcj4KCTwvZGVmcz4KCTxyZWN0IGhlaWdodD0nMjAwJScgd2lkdGg9JzIwMCUnIHN0eWxlPSdmaWx0ZXI6dXJsKCNmaWx0ZXIzMDAxKScgLz4KCTxyZWN0IGhlaWdodD0nMjAwJScgd2lkdGg9JzIwMCUnIHN0eWxlPSdmaWxsOiNiNWI1YjU7ZmlsbC1vcGFjaXR5OjAuNTM7Jy8+Cjwvc3ZnPg==');
+}

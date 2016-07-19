@@ -1,0 +1,128 @@
+body{
+  /*background-color: #000000;*/
+  background: -webkit-gradient(linear, center top, center bottom, from(#242424), to(#000000));
+
+}
+
+#wrapper{
+  width: 200px;
+  margin-left: -100px;
+  position: absolute;
+  left: 50%;
+  top:0;
+  display: none;
+}
+
+#homeCanvas{
+  width:1260px;
+  height: 780px;
+  margin: 0 auto;
+}
+
+
+h1{
+  height: 780px;
+  max-width: 1260px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+.center{
+  width: 200px;
+  height: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: rgba(40,40,40,0.7); 
+}
+
+#logo{
+  width: 120px;
+  height: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#logotext{
+  width: 60px;
+  height: 243px;
+  margin-top: 40px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#logotext2{
+  width: 111px;
+  height: 18px;
+  margin-top: 33px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#logotext3{
+  width: 126px;
+  height: 37px;
+  margin-top: 11px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#bottonE{
+  width: 160px;
+  height: 38px;
+  margin-top: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+#bottonP{
+  width: 160px;
+  height: 38px;
+  margin-top: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+}
+
+.botbot a {
+overflow: hidden;
+float: left;
+}
+.botbot a:hover {
+/*border: 8px solid rgba(66,164,255,0.6);*/
+border: 2px solid rgba(255,255,255,0.5);
+}
+.botbot a:hover img {
+margin: -2px;
+}
+
+/*li a img {
+    -moz-transition: -moz-transform 0.5s linear;
+    -webkit-transition: -webkit-transform 0.5s linear;
+    -o-transition: -o-transform 0.5s linear;
+    -ms-transition: -ms-transform 0.5s linear;
+    transition: transform 2.0s linear;
+}
+li a img:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
+}*/
+
+
+
+
