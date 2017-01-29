@@ -20,7 +20,7 @@
         var stage = new createjs.Stage('canvasEl');
 
         // 画像の場所を配列に保存しておく
-        var manifest = ['img/tomato.png','img/greenPepper.png'];
+        var manifest = ['img/vitaminC.png','img/iron.png'];
 
         // loadQueueクラスの呼び出し
         var loader = new createjs.LoadQueue();
@@ -35,15 +35,10 @@
         function addStage(){
             console.log('読み込み完了！');
 
-            var tomato = new createjs.Bitmap(manifest[0]);
-            stage.addChild(tomato);
-            tomato.x = 200;
-            tomato.y = 200;
-
-            var greenPepper = new createjs.Bitmap(manifest[1]);
-            stage.addChild(greenPepper);
-            greenPepper.x = 400;
-            greenPepper.y = 300;
+            // スプライトシートの呼び出し
+            var viSprite = new createjs.SpriteSheet(vitaminCSprite);
+            var vitaminC = new createjs.Sprite(viSprite,'stand');
+            stage.addChild(vitaminC);
         }
 
 
