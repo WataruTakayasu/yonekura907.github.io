@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>05 Container Createjs</title>
+</head>
+<body>
+    <canvas id="canvasEl" width="1024" height="768"></canvas>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        // window を読み込んだら
+        window.addEventListener("load", init);
+
+
+        function init(){
+
+            // ステージを作成
+            var stage = new createjs.Stage('canvasEl');
+
+            // container (グループ)の作成
+            var shapeContainer = new createjs.Container();
+            // ステージに配置
+            stage.addChild(shapeContainer);
+
+            // 円1の設定
+            var circle1 = new createjs.Shape();
+            circle1.graphics.beginFill('#FF0000').drawCircle(200, 100, 50);
+            // shapeContainerに配置
+            shapeContainer.addChild(circle1);
+            
+
+            // 円2の設定
+            var circle2 = new createjs.Shape();
+            circle2.graphics.beginFill('#00FF00').drawCircle(200, 200, 50);
+            // shapeContainerに配置
+            shapeContainer.addChild(circle2);
+ 
+
+            // 四角形の設定
+            var rect = new createjs.Shape();
+            rect.graphics.beginFill('#0000FF').drawRect(0, 0, 50, 50);
+            stage.addChild(rect);
+
+            // rectをクリックしたら
+            rect.addEventListener('click',function(){
+                // トゥイーンアニメーション
+                createjs.Tween.get(shapeContainer).to({x: 500, y: 400}, 2000, createjs.Ease.bounceOut);
+            });
+
+
+            createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+            createjs.Ticker.setFPS(30);
+
+
+            createjs.Ticker.addEventListener('tick',function(){
+                stage.update();
+            });
+            
+        }
+        
+    </script>
+</body>
+</html>
+
+

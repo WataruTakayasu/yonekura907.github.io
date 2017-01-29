@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>06 Preload Createjs</title>
+</head>
+<body>
+    <canvas id="canvasEl" width="1024" height="768"></canvas>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        // window を読み込んだら
+        window.addEventListener("load", init);
+
+
+        // 画像を保存するオブジェクト
+        var manifest = [
+            'img/tomato.png'
+        ];
+
+
+        function init(){
+            // ステージを作成
+            var stage = new createjs.Stage('canvasEl');
+
+            // loadQueueクラス
+            var loadQueue = new createjs.LoadQueue();
+
+            // 読み込み開始
+            loadQueue.loadManifest(manifest);
+
+            // 全部読み込み終わったら
+            loadQueue.addEventListener('complete', addStage);
+
+
+            function addStage(){
+                console.log('読み込み完了');
+
+                // 円の設定
+                var tomato = new createjs.Bitmap(manifest[0]);
+                tomato.x = 200;
+                tomato.y = 200;
+                
+                // ステージに配置
+                stage.addChild(tomato);
+            }
+
+
+            createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+            createjs.Ticker.setFPS(30);
+
+            createjs.Ticker.addEventListener('tick',function(){
+                stage.update();
+            });
+        }
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>07 SpriteSheet Createjs</title>
+</head>
+<body>
+    <canvas id="canvasEl" width="1024" height="768"></canvas>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        // window を読み込んだら
+        window.addEventListener("load", init);
+
+        // 画像を保存する配列
+        var manifest = [
+            {src:'img/calcium.png'}
+        ];
+
+        // スプライトシート用のオブジェクト
+        var calciumSprite = {
+            images: ["img/calcium.png"],
+            frames:{width:160,height:160},
+            animations:{
+                stand:34,
+                walk:[0,33],
+                stop:34
+            }
+        }
+
+
+        function init(){
+            // ステージを作成
+            var stage = new createjs.Stage('canvasEl');
+
+            // loadQueueクラス
+            var loadQueue = new createjs.LoadQueue();
+
+            // 読み込み開始
+            loadQueue.loadManifest(manifest);
+
+            // 全部読み込み終わったら
+            loadQueue.addEventListener('complete', addStage);
+
+
+            function addStage(){
+                console.log('読み込み完了');
+
+                var casprite = new createjs.SpriteSheet(calciumSprite);
+                var calcium = new createjs.Sprite(casprite,'stand');
+                stage.addChild(calcium);
+
+                createjs.Tween.get(calcium).wait(2000).call(calciumWalk).to({x: 500}, 4000).call(calciumStop);
+
+                function calciumWalk(){
+                  calcium.gotoAndPlay('walk');
+                }
+
+                function calciumStop(){
+                  calcium.gotoAndPlay('stop');
+                }
+            }
+
+
+            createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+            createjs.Ticker.setFPS(30);
+
+            createjs.Ticker.addEventListener('tick',function(){
+                stage.update();
+            });
+        }
+    </script>
+</body>
+</html>
+
+

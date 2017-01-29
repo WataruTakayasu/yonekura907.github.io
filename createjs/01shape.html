@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>01 Shape Createjs</title>
+</head>
+<body>
+    <canvas id="canvasEl" width="1024" height="768"></canvas>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        // window を読み込んだら
+        window.addEventListener("load", init);
+
+
+        function init(){
+
+            // ステージを作成
+            var stage = new createjs.Stage('canvasEl');
+
+            // 円の設定
+            var circle = new createjs.Shape();
+            circle.graphics.beginFill('#FF0000').drawCircle(200, 100, 50);
+            // ステージに配置
+            stage.addChild(circle);
+
+            // 四角形の設定
+            var rect = new createjs.Shape();
+            rect.graphics.beginFill('#0000FF').drawRect(100, 100, 150, 100);
+            rect.alpha = 0.5;
+            stage.addChild(rect);
+
+            // 描画の更新
+            stage.update();
+        }
+        
+    </script>
+</body>
+</html>
+
+

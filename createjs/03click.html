@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>03 Click Createjs</title>
+</head>
+<body>
+    <canvas id="canvasEl" width="1024" height="768"></canvas>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        // window を読み込んだら
+        window.addEventListener("load", init);
+
+
+        function init(){
+
+            // ステージを作成
+            var stage = new createjs.Stage('canvasEl');
+
+            // 円の設定
+            var circle = new createjs.Shape();
+            circle.graphics.beginFill('#FF0000').drawCircle(200, 300, 50);
+            
+
+            
+
+            // 四角形の設定
+            var rect1 = new createjs.Shape();
+            rect1.graphics.beginFill('#0000FF').drawRect(100, 0, 100, 100);
+            stage.addChild(rect1);
+
+            var rect2 = new createjs.Shape();
+            rect2.graphics.beginFill('#00FF00').drawRect(200, 0, 100, 100);
+            stage.addChild(rect2);
+
+            // rect1をクリックしたら
+            rect1.addEventListener('click',function(){
+                // ステージに配置
+                stage.addChild(circle);
+            });
+
+            // rect2をクリックしたら
+            rect2.addEventListener('click',function(){
+                // ステージから削除
+                stage.removeChild(circle);
+            });
+
+
+            createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+            createjs.Ticker.setFPS(30);
+
+
+            createjs.Ticker.addEventListener('tick',function(){
+                stage.update();
+            });
+
+        }
+        
+    </script>
+</body>
+</html>
+
+

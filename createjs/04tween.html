@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>04 Tween Createjs</title>
+</head>
+<body>
+    <canvas id="canvasEl" width="1024" height="768"></canvas>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <script>
+        // window を読み込んだら
+        window.addEventListener("load", init);
+
+
+        function init(){
+
+            // ステージを作成
+            var stage = new createjs.Stage('canvasEl');
+
+            // 円の設定
+            var circle = new createjs.Shape();
+            circle.graphics.beginFill('#FF0000').drawCircle(200, 100, 50);
+            circle.alpha = 0;
+            // ステージに配置
+            stage.addChild(circle);
+
+
+            // 四角形の設定
+            var rect = new createjs.Shape();
+            rect.graphics.beginFill('#0000FF').drawRect(100, 100, 150, 100);
+            stage.addChild(rect);
+
+            // rectをクリックしたら
+            rect.addEventListener('click',function(){
+                // トゥイーンアニメーション
+                createjs.Tween.get(circle).to({x: 500, y: 400, alpha: 1}, 2000, createjs.Ease.bounceOut);
+            });
+
+
+            createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED;
+            createjs.Ticker.setFPS(30);
+
+
+            createjs.Ticker.addEventListener('tick',function(){
+                stage.update();
+            });
+            
+        }
+        
+    </script>
+</body>
+</html>
+
+
