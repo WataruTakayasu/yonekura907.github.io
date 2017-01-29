@@ -23,24 +23,26 @@
 
         // 画像の場所を配列に保存しておく
         var manifest = ['img/vitaminC.png','img/iron.png'];
-
         // loadQueueクラスの呼び出し
         var loader = new createjs.LoadQueue();
-
         // 読み込み開始
         loader.loadManifest(manifest);
-
         // 読み込み完了
         loader.addEventListener('complete',addStage);
 
-
         function addStage(){
             console.log('読み込み完了！');
-
             // スプライトシートの呼び出し
             var viSprite = new createjs.SpriteSheet(vitaminCSprite);
             var vitaminC = new createjs.Sprite(viSprite,'stand');
             stage.addChild(vitaminC);
+
+
+            var ironSprite = new createjs.SpriteSheet(ironSprite);
+            var iron = new createjs.Sprite(ironSprite, 'stand');
+            stage.addChild(iron);
+            iron.y = 300;
+
         }
 
 
