@@ -1,0 +1,125 @@
+img{
+	width: 100%;
+}
+
+#box {
+	z-index: 10;
+}
+
+.box_content {
+	position: absolute;
+	top:  50%;
+	left: 50%;
+	width: 500px;
+	height: 300px;
+	margin-left: -250px;
+	margin-top: -150px;
+	border: 1px #eee solid;
+	opacity: 0;
+	background: #fff;
+}
+
+@keyframes fadein {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.fadein {
+	animation-name:  fadein;
+	animation-duration: 0.5s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+}
+
+.fadeout {
+	animation-name:  fadeout;
+	animation-duration: 0.5s;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadeout {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+	}
+}
+
+.box_content .box_inner {
+	padding:  2rem;
+	position: relative;
+}
+
+.box_content .box_inner .buttun {
+	position: absolute;
+	right: 1rem;
+	top:  1rem;
+}
+
+.box_content .box_inner .buttun:hover {
+	cursor: pointer;
+}
+
+.box_content .box_inner .buttun .fa {
+	font-size: 1.5rem;
+}
+
+.box_content .image_area {
+	width: 30%;
+	display: inline-block;
+	vertical-align: top;
+	border: 1px #eee solid;
+	margin-right:  2rem;
+}
+
+.box_content .text_area {
+	width: 60%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.box_content .text_area  .title {
+	font-size: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+
+#chronology {
+	position: absolute;
+	bottom: 1rem;
+	left: 50%;
+	margin-left: -400px;
+	width: 800px;
+	text-align:  center;
+}
+
+#chronology li {
+	display: inline-block;
+	padding:  0 4rem;
+	border: 1px #333 solid;
+	background: #333;
+	color: #eee;
+	transition: all .4s ease;
+}
+
+#chronology li:hover {
+	cursor: pointer;
+	background: #eee;
+	color: #333;
+	border: 1px #333 solid;
+}
+
+#defaultCanvas0 {
+	position: absolute;
+	z-index: -1;
+	top:  0;
+	left: 0;
+}

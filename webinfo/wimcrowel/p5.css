@@ -1,0 +1,72 @@
+#wimb {
+  position:absolute;
+  top: 50px;
+  left: 50px;
+  opacity:0;
+  animation-name: fadein;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
+}
+
+#wimas{
+    position: absolute;
+    top: 270px;
+    left: 50px;
+    opacity:0;
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#wimcs{
+    position: absolute;
+    top: 500px;
+    left: 50px;
+    opacity:0;
+    animation-name: fadein;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#legers {
+    position: absolute;
+    top: 550px;
+    left: 300px;
+    opacity:0;
+  /*animation-name: fadein;*/
+    /*animation-duration: 1s;
+    animation-fill-mode: forwards;*/
+}
+#amuses {
+    position: absolute;
+    top: 550px;
+    left: 300px;
+    opacity:0;
+    /*animation-name: fadein;*/
+    /*animation-duration: 1s;
+    animation-fill-mode: forwards;*/
+}
+
+#fodors {
+    position: absolute;
+    top: 550px;
+    left: 300px;
+    opacity:0;
+    /*animation-name: fadein;*/
+    /*animation-duration: 1s;
+    animation-fill-mode: forwards;*/
+}
+
+@keyframes fadein{
+  0%{
+     opacity: 0;
+
+  }
+  100%{
+
+      opacity: 1;
+
+  }
+
+}
